@@ -1,0 +1,32 @@
+{
+   "name": "happygiraffe1",
+   "version": "1.0.0",
+   "description": "",
+   "main": "server.js",
+   "engines": {
+      "node": "15.7.0",
+      "npm": "6.13.4"
+   },
+   "scripts": {
+      "start": "node server/server.js",
+      "server": "nodemon server/server.js",
+      "frontend": "npm start --prefix frontend",
+      "dev": "concurrently \"npm run frontend\" \"npm start\"",
+      "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+   },
+   "author": "",
+   "license": "ISC",
+   "dependencies": {
+      "bcryptjs": "^2.4.3",
+      "concurrently": "^7.6.0",
+      "cors": "^2.8.5",
+      "dotenv": "^16.0.3",
+      "express": "^4.18.1",
+      "gridfs-stream": "^1.1.1",
+      "jsonwebtoken": "^8.5.1",
+      "mongoose": "^6.6.4",
+      "multer": "^1.4.4",
+      "multer-gridfs-storage": "^5.0.2",
+      "nodemon": "^2.0.22"
+   }
+}

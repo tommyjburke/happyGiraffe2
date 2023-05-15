@@ -1,0 +1,1020 @@
+/* 
+font-family: 'Caveat Brush';
+font-family: 'Crafty Girls';
+font-family: 'Fuzzy Bubbles';
+font-family: 'Gaegu';
+font-family: 'Gloria Hallelujah';
+font-family: 'Gochi Hand';
+font-family: 'Handlee';
+font-family: 'Ma Shan Zheng';
+font-family: 'Patrick Hand';
+font-family: 'Schoolbell' ;
+font-family: 'Short Stack' ;
+font-family: 'Swanky and Moo Moo'; 
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+
+.currentScore {
+   margin: 5px;
+   padding: 5px;
+   font-size: 1.2em;
+   color: white;
+   font-family: 'Crafty Girls';
+   font-family: 'Gloria Hallelujah';
+   font-family: 'Ma Shan Zheng';
+   font-family: 'Short Stack';
+   font-family: 'Press Start 2P';
+   font-family: 'Orbitron';
+}
+
+.giraffe_background {
+   position: relative;
+   height: 100%;
+   width: 100%;
+
+   align-items: center;
+   justify-content: center;
+
+   background-size: 100% 100%;
+   background-size: contain;
+   background-size: cover;
+   background-size: auto 100%;
+}
+
+.giraffe_background::before {
+   content: '';
+   /* background: url('giraffe_background5.png'); */
+   background-size: cover;
+   background-repeat: no-repeat;
+   position: absolute;
+   top: 0px;
+   right: 0px;
+   bottom: 0px;
+   left: 0px;
+   opacity: 0.2;
+   z-index: -1;
+   background-size: 100% 100%;
+   background-size: cover;
+   background-size: auto 100%;
+}
+
+.uiInput {
+   font-family: 'Handlee', cursive;
+   border-radius: 5px;
+   background-color: #654321;
+   color: #d58433;
+   font-size: 0.9em;
+   /* width: 500px; */
+   text-align: center;
+   width: auto;
+   height: 40px !important;
+   margin-top: 5px !important;
+   margin-bottom: 5px !important;
+}
+
+.uiInputTitle {
+   font-family: 'Handlee', cursive;
+   border-radius: 5px;
+   background-color: #654321;
+   color: #d58433;
+   font-size: 0.9em;
+   /* width: 500px; */
+   text-align: center;
+   width: 80%;
+   height: 35px !important;
+}
+
+.uiInputGrey {
+   font-family: 'Handlee', cursive;
+   border-radius: 5px;
+   background-color: grey;
+   color: darkgray;
+   font-size: 0.9em;
+   /* width: 500px; */
+   text-align: center;
+   width: auto;
+}
+.myBtn {
+   border: 1px solid black;
+   border-radius: 10px;
+   font-size: 0.8em;
+
+   padding: 0 10px;
+   background-color: rgb(60, 156, 183);
+   color: #654321;
+   display: inline-block;
+   font-family: 'Schoolbell', 'Gochi Hand';
+   font-family: 'Fuzzy Bubbles', cursive, 'comic sans ms';
+   text-align: center;
+   margin: 30px auto;
+   margin: 0 10px 0 10px auto;
+   display: block;
+   padding: 4px;
+   background-color: rgb(59, 210, 59);
+   border-radius: 10px;
+   font-size: 0.8em !important;
+}
+
+Slider {
+   font-family: 'Handlee', cursive;
+   border-radius: 5px;
+   background-color: #654321;
+   color: orangered;
+   font-size: 0.9em;
+   /* width: 500px; */
+   text-align: center;
+   width: auto;
+}
+
+::-webkit-slider-runnable-track {
+   width: 100%;
+   height: 8.4px;
+   cursor: pointer;
+   animate: 0.2s;
+   box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+   background: #3071a9;
+   border-radius: 1.3px;
+   border: 0.2px solid #010101;
+}
+
+input {
+   font-family: 'Handlee', cursive;
+   border-radius: 5px;
+   background-color: #654321;
+   color: orangered;
+   font-size: 0.9em;
+   /* width: 500px; */
+   text-align: center;
+}
+
+.uiSelect {
+   font-family: 'Fuzzy Bubbles', cursive;
+   border-radius: 5px;
+   font-size: 0.6em;
+   background-color: #654321;
+   color: #f4bb3e;
+   width: auto;
+   padding: 20px;
+   margin: 20px;
+}
+
+.mathQuizDiv {
+   background-color: #f4bb3e;
+   border-radius: 20% !important;
+}
+
+.myborder {
+   border: 1px solid #000;
+   border-radius: 5px;
+   box-shadow: #654321 2px 2px 2px 2px;
+}
+
+.optionsBordered {
+   border: 1px solid #000;
+   border-radius: 20px;
+   box-shadow: #654321 2px 2px 2px 2px;
+   width: 500px !important;
+   margin: auto;
+   margin-top: 10px;
+   margin-bottom: 10px;
+   padding: 10px;
+   font-family: 'Gaegu', 'Swanky and Moo Moo';
+   font-size: 1.4em !important;
+}
+
+.optionsBordered2 {
+   border: 1px solid #000;
+   border-radius: 20px;
+   box-shadow: #654321 2px 2px 2px 2px;
+   width: 500px !important;
+   margin: auto;
+   margin-top: 10px;
+   margin-bottom: 30px;
+   padding: 10px;
+   /* font-family: 'Gaegu', 'Swanky and Moo Moo';
+   font-size: 1.4em !important; */
+}
+
+.mathQuizTable {
+   margin: 15px auto;
+   padding: 15px;
+   border: 3px solid #654321;
+
+   width: 80%;
+   text-align: center;
+   font-family: 'Gaegu', 'Swanky and Moo Moo', cursive, 'comic sans ms';
+   color: #654321;
+   background-color: #f4bb3e !important;
+   border-collapse: collapse;
+   border-radius: 1em !important;
+}
+
+body {
+   /* text-align: center; */
+   background-color: #f4bb3e;
+   text-align: center;
+   font-family: 'Gaegu', 'Swanky and Moo Moo', cursive, 'comic sans ms';
+   color: #654321;
+}
+
+.correct {
+   font-size: 3em;
+   color: green;
+}
+
+.wrong {
+   font-size: 3em;
+   color: red;
+}
+
+/* .littleButton{
+  margin: 0 20px;
+  padding: 10px;
+  font-size: 0.6em;
+  background-color: rgb(60, 156, 183);
+  color: #654321; 
+  display: inline-block;
+  font-family: 'Gochi Hand';
+} */
+
+.mathOptions {
+   text-align: center;
+
+   color: #57310a;
+}
+
+.output {
+   text-align: center;
+   font-size: 1.4em;
+   font-family: 'Fuzzy Bubbles', cursive, 'comic sans ms';
+}
+
+.message {
+   text-align: center;
+   font-size: 1.4em;
+   /* font-family: 'Fuzzy Bubbles', cursive, 'comic sans ms'; */
+}
+
+.chinese {
+   font-family: 'Ma Shan Zheng';
+   font-size: 1em;
+}
+
+.giraffe {
+   font-family: 'Mali', bold;
+   font-size: 1.2em;
+   color: #654321;
+}
+
+.pri {
+   font-family: 'gaegu', bold;
+   font-size: 1.4em;
+   color: #654321;
+}
+
+.boxAnswer {
+   font-size: 1.1em !important;
+   padding: 10px;
+   text-align: center;
+   width: 60px;
+   background-color: #ddd;
+   border: 1px solid black;
+   border-radius: 10px;
+
+   font-family: 'Fuzzy Bubbles';
+   font-family: 'Schoolbell', 'Gochi Hand';
+   font-family: 'Gochi Hand';
+   font-size: 1.2em;
+   font-family: 'Patrick Hand', cursive;
+   font-family: 'Swanky and Moo Moo', bold;
+   font-family: 'comic sans ms' !important;
+   height: 50px !important;
+   color: rgb(1, 142, 1) !important;
+}
+
+.boxAnswerTransparent {
+   font-size: 1.1em !important;
+   padding: 10px;
+   text-align: center;
+   width: 60px;
+   background-color: transparent;
+   border: 0px transparent;
+   border-radius: 10px;
+
+   font-family: 'Fuzzy Bubbles';
+   font-family: 'Schoolbell', 'Gochi Hand';
+   font-family: 'Gochi Hand';
+   font-size: 1.2em;
+   font-family: 'Patrick Hand', cursive;
+   font-family: 'Swanky and Moo Moo', bold;
+   font-family: 'comic sans ms' !important;
+   height: 50px !important;
+   color: brown !important;
+}
+
+.boxSign {
+   display: inline-block;
+   padding: 10px;
+   font-size: 1.4em;
+   font-family: 'Patrick Hand';
+   font-family: 'Orbitron';
+}
+
+.box {
+   padding: 10px 5px;
+   text-align: center;
+   width: 60px;
+   line-height: 55px;
+   background-color: rgb(177, 185, 177);
+   border: 1px dotted #ccc;
+   border-radius: 10px;
+   display: inline-block;
+   font-family: 'Swanky and Moo Moo';
+   font-family: 'Patrick Hand';
+   font-family: 'Swanky and Moo Moo', bold;
+   font-family: 'comic sans ms' !important;
+   font-size: 1.5em;
+}
+
+button {
+   font-family: 'Fuzzy Bubbles', cursive, 'comic sans ms';
+   text-align: center;
+   margin: 30px auto;
+   display: block;
+   padding: 10px;
+   background-color: rgb(59, 210, 59);
+   border-radius: 10px;
+   font-size: 1.5em;
+}
+
+.btn1 {
+   background-color: rgb(45, 180, 225);
+}
+
+/* .anim {
+  transition: width 2s;
+  
+
+  } */
+
+.pokemons2 {
+   position: relative;
+
+   animation: mymove 0.6s;
+   animation-delay: 0s;
+   animation-fill-mode: forwards;
+}
+
+@keyframes mymove {
+   from {
+      top: 3000px;
+   }
+   to {
+      top: 0px;
+   }
+}
+
+.myCheckBoxes {
+   display: block;
+   position: relative;
+   padding-left: 35px;
+   margin-bottom: 12px;
+   cursor: pointer;
+   font-size: 22px;
+   -webkit-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.myCheckBoxes input {
+   position: absolute;
+   opacity: 0;
+   cursor: pointer;
+   height: 0;
+   width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+   position: absolute;
+   top: 0;
+   left: 0;
+   height: 25px;
+   width: 25px;
+   background-color: #bc9153;
+}
+
+/* On mouse-over, add a grey background color */
+.myCheckBoxes:hover input ~ .checkmark {
+   background-color: #f8e36f;
+}
+
+/* When the checkbox is checked, add a blue background */
+.myCheckBoxes input:checked ~ .checkmark {
+   background-color: brown;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+   content: '';
+   position: absolute;
+   display: none;
+}
+
+/* Show the checkmark when checked */
+.myCheckBoxes input:checked ~ .checkmark:after {
+   display: block;
+}
+
+/* Style the checkmark/indicator */
+.myCheckBoxes .checkmark:after {
+   left: 9px;
+   top: 5px;
+   width: 5px;
+   height: 10px;
+   border: solid white;
+   border-width: 0 3px 3px 0;
+   -webkit-transform: rotate(45deg);
+   -ms-transform: rotate(45deg);
+   transform: rotate(45deg);
+}
+
+table {
+   border: 1px solid black;
+   border-radius: 10px;
+   text-align: center;
+   margin: 0 auto 0 auto !important;
+}
+
+section {
+   text-align: center;
+   display: inline-block;
+}
+
+section.range-slider {
+   position: relative;
+   width: 100px;
+   height: 5px;
+   text-align: center;
+}
+
+section.range-slider input {
+   pointer-events: none;
+   position: absolute;
+   overflow: hidden;
+   left: 0;
+   top: 25px;
+   width: 100px;
+   outline: none;
+   height: 18px;
+   margin: 0;
+   padding: 0;
+}
+
+section.range-slider input::-webkit-slider-thumb {
+   pointer-events: all;
+   position: relative;
+   z-index: 1;
+   outline: 0;
+   background-color: red;
+}
+
+section.range-slider input::-moz-range-thumb {
+   pointer-events: all;
+   position: relative;
+   z-index: 10;
+   -moz-appearance: none;
+   background-color: red;
+   width: 9px;
+}
+
+section.range-slider input::-moz-range-track {
+   position: relative;
+   z-index: -1;
+   background-color: rgb(255, 0, 0);
+   border: 0;
+}
+section.range-slider input:last-of-type::-moz-range-track {
+   -moz-appearance: none;
+   background: none transparent;
+   border: 0;
+}
+section.range-slider input[type='range']::-moz-focus-outer {
+   border: 0;
+}
+
+.mathModal {
+   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+   font-size: 1.4em;
+   border-radius: 6px;
+   background-color: rgba(255, 255, 255, 0.763);
+   padding: 1rem;
+   text-align: center;
+   width: 30rem;
+   z-index: 100;
+   position: fixed;
+   top: 30vh;
+   left: calc(50% - 15rem);
+   opacity: 0.6;
+}
+
+.backdrop {
+   position: fixed;
+   z-index: 1;
+   background-color: rgba(0, 0, 0, 0.75);
+   width: 100%;
+   height: 100vh;
+   top: 0;
+   left: 0;
+}
+
+.notes {
+   font-family: 'Handlee', cursive;
+   border-radius: 10px;
+   background-color: #654321;
+   font-size: 0.9em !important;
+   /* width: 500px; */
+   /* text-align: left; */
+   width: auto;
+
+   /* height: 200px !important;
+   width: 95%; */
+
+   color: #f8e36f;
+   font-family: 'Patrick Hand';
+   padding: 5px !important;
+
+   align-items: left;
+   text-align: left !important;
+}
+
+.modal-content2 {
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+}
+
+.modal-content2 > div {
+   display: flex;
+   justify-content: left;
+   width: 100%;
+}
+
+.question {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   margin-bottom: 10px;
+   background-color: #f4bb3e;
+   font-size: 1.8em;
+   font-family: 'comic sans ms';
+   padding-top: 5px;
+   padding-bottom: 5px;
+   border-radius: 20px;
+   border: 2px solid black;
+}
+
+.greyQuestion {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   margin-bottom: 10px;
+   background-color: lightgray;
+   font-size: 1.8em;
+   font-family: 'comic sans ms';
+   padding-top: 5px;
+   padding-bottom: 5px;
+   border-radius: 20px;
+   border: 2px solid black;
+}
+
+.redText {
+   color: red;
+   font-family: 'Schoolbell';
+}
+
+.question button {
+   margin-left: 10px;
+}
+
+.question form {
+   display: inline-block;
+}
+
+.question form button {
+   display: inline-block;
+   margin-left: 10px;
+}
+
+.checkBtn {
+   border: 2px solid black;
+   border-radius: 10px;
+
+   padding: 0 10px;
+
+   color: #654321;
+   display: inline-block;
+   font-family: 'Schoolbell', 'Gochi Hand';
+   font-family: 'Fuzzy Bubbles', cursive, 'comic sans ms';
+   text-align: center;
+   margin: 30px auto;
+   margin: 5px 10px 5px 10px !important;
+   display: block;
+   padding: 4px;
+   background-color: #d58433 !important;
+   border-radius: 10px;
+   font-size: 0.5em !important;
+}
+
+.indexNum {
+   font-size: 0.5em;
+   font-family: 'Courier New', Courier, monospace;
+   background-color: #654321;
+   color: #f8e36f;
+   font-weight: bold;
+   padding: 10px 12px 10px 14px;
+   margin-right: 20px;
+   margin-left: 10px;
+   border: #000000 2px solid;
+   border-radius: 50%;
+   box-shadow: black 0px 0px 5px 0px;
+}
+
+.spanQuestion {
+   font-size: 1em;
+   border: #000000 1px dashed;
+   border-radius: 20px;
+   color: #654321;
+   padding-left: 15px;
+   padding-right: 15px;
+}
+
+.correctBtn {
+   border: 2px solid black;
+   border-radius: 10px;
+   padding: 0 10px;
+   color: #654321;
+   display: inline-block;
+
+   font-family: 'Fuzzy Bubbles', cursive, 'comic sans ms';
+   text-align: center;
+   margin: 30px auto;
+   margin: 5px 10px 5px 10px !important;
+   display: block;
+   padding: 4px;
+
+   background-color: #00ff00;
+   border-radius: 10px;
+   font-size: 0.8em !important;
+   font-family: 'Schoolbell', 'Gochi Hand';
+   pointer-events: none;
+}
+
+.incorrectBtn {
+   background-color: #ad7c7cf7;
+   border: 2px solid black;
+   border-radius: 10px;
+   padding: 0 10px;
+   color: #654321;
+   display: inline-block;
+   font-family: 'Schoolbell', 'Gochi Hand';
+   font-family: 'Fuzzy Bubbles', cursive, 'comic sans ms';
+   text-align: center;
+   margin: 30px auto;
+   margin: 5px 10px 5px 10px !important;
+   display: block;
+   padding: 4px;
+
+   border-radius: 10px;
+   font-size: 0.5em !important;
+   pointer-events: none;
+}
+
+.scoreGreen {
+   display: inline-block;
+   background-color: #149f14;
+   border: 2px solid black;
+
+   font-family: 'Orbitron', 'Gochi Hand';
+
+   color: white;
+   font-size: 1.2em;
+   margin-right: 1px !important;
+
+   margin-bottom: 1px !important;
+   padding: 0px !important;
+   width: 35px;
+   height: 35px;
+   margin-left: 4px;
+}
+
+.scoreRed {
+   display: inline-block;
+   background-color: red;
+   border: 2px solid black;
+
+   font-family: 'Orbitron', 'Gochi Hand';
+
+   color: white;
+   font-size: 1.2em;
+   margin-left: 1px !important;
+   margin-right: 5px;
+
+   margin-bottom: 1px !important;
+   padding: 0px !important;
+   width: 35px;
+   height: 35px;
+}
+
+button.start {
+   width: 100px !important; /* Replace with your desired button width */
+   height: 100px !important; /* Replace with your desired button height */
+   font-size: 1.7rem;
+   padding: 1px;
+   background-color: #4caf50;
+   color: white;
+   font-family: 'Gloria Hallelujah';
+   border: black solid 3px; /* Remove the border property to make it a circle */
+   border-radius: 50%; /* Set the border-radius to 50% to make it a circle */
+   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+   cursor: pointer;
+   float: right;
+   margin: 5px;
+}
+
+/* .flash2 {
+   animation-name: flash;
+   animation-duration: 1s;
+   animation-iteration-count: infinite;
+}
+
+@keyframes flash2 {
+   0% {
+      background-color: #1b461d;
+   }
+   50% {
+      background-color: rgb(27, 96, 42);
+   }
+   100% {
+      background-color: #144c16;
+   }
+} */
+
+button.start:hover {
+   background-color: #0b500e;
+   font-family: 'Patrick Hand';
+   font-size: 2em;
+}
+
+button.start:active {
+   box-shadow: none;
+}
+
+.notes1 {
+   font-family: 'Gochi Hand';
+
+   text-align: left;
+   margin: 30px auto;
+   margin-left: 20px;
+
+   display: block;
+   padding: 4px;
+
+   border-radius: 10px;
+   font-size: 1.5em !important;
+}
+
+.rightButtonContainer {
+   display: flex;
+   justify-content: flex-end;
+}
+
+/* 
+font-family: 'Caveat Brush';
+font-family: 'Crafty Girls';
+font-family: 'Fuzzy Bubbles';
+font-family: 'Gaegu';
+font-family: 'Gloria Hallelujah';
+font-family: 'Gochi Hand';
+font-family: 'Handlee';
+font-family: 'Ma Shan Zheng';
+font-family: 'Patrick Hand';
+font-family: 'Schoolbell' ;
+font-family: 'Short Stack' ;
+font-family: 'Swanky and Moo Moo'; 
+*/
+
+.borderedNotes {
+   border: 1px dotted brown;
+   border-radius: 10px;
+
+   color: #654321;
+
+   font-family: 'Fuzzy Bubbles';
+
+   padding: 15px;
+
+   font-size: 1em !important;
+   width: 95%;
+}
+
+button {
+   transition: box-shadow 0.1s ease-in-out;
+}
+
+button:hover {
+   border-radius: 18px;
+   border: #d58433 2px solid !important;
+   color: #d58433 !important;
+}
+
+.whiteBackground {
+   background-color: white;
+}
+
+.ql-toolbar .ql-stroke {
+   fill: none;
+   stroke: #fff !important;
+   stroke-width: 1 !important;
+   font-size: 3px !important;
+   width: 2.5em !important;
+}
+
+.ql-toolbar .ql-fill {
+   fill: #fff !important;
+   font-size: 0.5em !important;
+   stroke: 20px !important;
+   width: 2.5em !important;
+   font-size: 3px !important;
+}
+
+.ql-toolbar .ql-picker {
+   color: #fff !important;
+   font-size: 0.5em !important;
+   width: 2.5em !important;
+   font-size: 3px !important;
+}
+
+.ql-bold {
+   font-size: 6px !important;
+}
+
+.ql-toolbar .ql-button {
+   font-size: 10px !important;
+   height: 10px !important;
+   width: 10px !important;
+}
+
+.ql-toolbar .ql-button.ql-bold::before {
+   font-size: 10px !important;
+   height: 10px !important;
+   width: 10px !important;
+}
+
+.ql-toolbar .ql-button .ql-icon.ql-bold {
+   font-size: 10px !important;
+}
+
+#my-toolbar .ql-button .ql-icon.ql-bold {
+   font-size: 10px;
+}
+
+.app .ql-container {
+   min-height: 10em;
+   border-bottom-left-radius: 0.5em;
+   border-bottom-right-radius: 0.5em;
+   background: #fefcfc;
+   border: 1px solid #ccc;
+   border-top: 0;
+}
+
+.notesQuill {
+   border-radius: 10px;
+   background-color: #654321;
+
+   /* width: 500px; */
+   /* text-align: left; */
+   width: auto;
+
+   /* height: 200px !important;
+   width: 95%; */
+
+   font-family: 'Patrick Hand';
+   padding: 0px !important;
+
+   align-items: left;
+   text-align: left !important;
+   border-radius: 15px;
+   font-family: 'Gochi Hand' !important;
+   font-family: 'Handlee', cursive;
+   font-size: 0.1em !important;
+
+   color: #f8e36f !important;
+   margin-bottom: 5px;
+}
+
+.notesQuill button:hover {
+   box-shadow: 0 0 0px 0px black !important;
+
+   border: 0px !important;
+}
+
+.notes2 {
+   font-family: 'Gochi Hand';
+
+   text-align: left;
+
+   margin-left: 5px;
+
+   padding: 3px;
+
+   font-size: 1.4em !important;
+   font-family: 'Gochi Hand';
+   color: rgb(173, 120, 19);
+}
+
+.bgGrey {
+   background-color: grey;
+}
+
+/* 
+font-family: 'Caveat Brush';
+font-family: 'Crafty Girls';
+font-family: 'Fuzzy Bubbles';
+font-family: 'Gaegu';
+font-family: 'Gloria Hallelujah';
+font-family: 'Gochi Hand';
+font-family: 'Handlee';
+font-family: 'Ma Shan Zheng';
+font-family: 'Patrick Hand';
+font-family: 'Schoolbell' ;
+font-family: 'Short Stack' ;
+font-family: 'Swanky and Moo Moo'; 
+*/
+
+.tomButton {
+   background-color: #654321 !important;
+   color: white !important;
+
+   border: 2px solid;
+   border-radius: 15px;
+   /* padding-top: 20px !important; */
+   padding-bottom: 20px !important;
+
+   margin-top: 5px !important;
+   height: 40px !important;
+   display: block; /* set the display property to block */
+   margin: 0 auto; /* set the horizontal margin to auto */
+   font-family: 'Fuzzy Bubbles';
+   font-size: 1em !important;
+   color: white !important;
+}
+
+.pokemons {
+   align-items: center !important;
+   text-align: center !important;
+   background-color: white;
+   flex-direction: row;
+   display: flex;
+   opacity: 0.8;
+   justify-content: center !important;
+}
+
+.pokemons2 {
+   text-align: center !important;
+   align-items: center !important;
+   position: relative;
+
+   animation: mymove 0.6s;
+   animation-delay: 0s;
+   animation-fill-mode: forwards;
+}
+
+@keyframes mymove {
+   from {
+      top: 3000px;
+   }
+   to {
+      top: 0px;
+   }
+}
+
+.answerSpan {
+   font-family: 'Courier';
+   font-size: 1em;
+   color: #654321;
+   display: inline-block;
+   width: 40px;
+   height: 40px;
+   margin: auto;
+
+   margin-right: 40px;
+   margin-left: 2px;
+   background: rgb(255, 255, 0);
+   text-align: center;
+   padding: 6px;
+   border-radius: 50%;
+}

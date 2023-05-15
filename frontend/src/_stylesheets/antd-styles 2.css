@@ -1,0 +1,311 @@
+/* .ant-card-body {
+   background-color: #d58433;
+} */
+
+Table {
+   font-family: 'gaegu' !important;
+   color-scheme: dark !important;
+   color: black !important;
+   width: 100%;
+   border-collapse: collapse;
+   border: 1px solid #000;
+   margin: 0px 0px 0px 0px !important;
+   padding: 0px 0px 0px 0px !important;
+   font-size: 16px !important;
+   background-color: #fdcd66 !important;
+}
+
+th {
+   text-align: center;
+   font-weight: bold;
+   text-decoration: underline;
+   color: #654321;
+   font-family: 'Schoolbell', cursive;
+   font-size: 14px !important;
+}
+td {
+   text-align: center;
+}
+
+.modalStyle {
+   padding: 5px;
+
+   background-color: var(--secondary) !important;
+   color: white !important;
+   border-radius: 5px;
+   border: #654321 2px solid;
+}
+
+.modalStyle2 {
+   padding: 15px;
+   margin: 10px;
+   background-color: var(--secondary) !important;
+   color: #654321 !important;
+   border-radius: 10px;
+   border: #654321 2px solid;
+}
+
+.ant-input {
+   color: #654321 !important;
+   background-color: #ffe8b6 !important;
+}
+
+/* .ant-form-item-control-input {
+   background-color: white !important;
+} */
+
+.tabsStyle {
+   font-style: normal;
+   font-weight: bold;
+   font-size: 36px;
+   line-height: 24px;
+   text-align: center;
+}
+
+.ant-form-item {
+   margin-bottom: 10px !important;
+}
+
+.ant-table-tbody > tr.ant-table-row:hover > td,
+.ant-table-tbody > tr > td.ant-table-cell-row-hover {
+   background-color: rgba(196, 196, 111, 0.594) !important;
+}
+.ant-table-tbody {
+   background-color: #ffe8b6 !important;
+   color: #654321;
+}
+
+.ant-table-thead .ant-table-cell {
+   background-color: #654321 !important;
+   text-align: center !important;
+   font-weight: bold !important;
+   text-decoration: underline !important;
+   color: white !important;
+}
+
+.ant-modal-header {
+   color: white !important;
+   /* background-color: #654321 !important; */
+}
+
+.ant-modal-title {
+   color: #654321 !important;
+   font-family: 'fuzzy bubbles' !important;
+   font-size: 1.4em !important;
+   font-style: underline !important;
+}
+
+.ant-form-item-label {
+   color: red;
+}
+
+.ant-notification-center {
+   left: 50% !important;
+   bottom: 10% !important;
+   margin-right: 30% !important;
+   transform: translate(-50%, -50%) !important;
+}
+
+/* .ant-message {
+	position: absolute !important;
+	width: fit-content !important;
+	bottom: 20px !important;
+	top: initial !important;
+	right: 20px !important;
+	left: initial !important;
+} */
+
+.ant-message {
+   position: absolute;
+   bottom: 20px !important;
+   top: unset !important;
+}
+
+.ant-transfer-list-header {
+   background-color: #654321 !important;
+   color: white !important;
+   padding-left: 5px !important;
+   border: #654321 2px solid !important;
+   font-family: 'fuzzy bubbles', sans-serif !important;
+   color: #d58433 !important;
+}
+
+.ant-transfer-list-content-item {
+   background-color: primary !important;
+   border: 1px solid #654321 !important;
+   color: black;
+   font-family: 'gaegu', sans-serif;
+}
+
+.ant-transfer-list-content-item.ant-transfer-list-content-item-selected {
+   color: red;
+   border: #654321 2px solid !important;
+}
+
+.my-transfer .ant-transfer-list-header {
+   background-color: #654321 !important;
+   color: white !important;
+   border: #654321 2px solid !important;
+}
+
+.my-transfer .ant-transfer-list-content-item {
+   color: red;
+   border: #654321 2px solid !important;
+   border: #654321 2px solid !important;
+}
+
+.my-transfer .ant-transfer-list-content-item.ant-transfer-list-content-item-selected {
+   color: red;
+   border: #654321 2px solid !important;
+}
+
+.ant-space {
+   background-color: transparent !important;
+}
+
+.ant-input {
+   border-color: #654321 solid 2px !important;
+   background-color: white !important;
+}
+
+.ant-input ant-input-status-success {
+   background-color: white !important;
+}
+
+.ant-form-item-control-input input {
+   background-color: transparent !important;
+}
+
+.ant-input-group > .ant-input:nth-child(2) {
+   background-color: transparent !important;
+}
+
+.input-wrapper {
+   background-color: lightblue !important;
+}
+
+.ant-input {
+   background-color: white !important;
+   color: #654321 !important;
+}
+
+.ant-input-affix-wrapper {
+   color: #654321 !important;
+   background-color: transparent !important;
+   border: 0px;
+}
+
+.ant-btn {
+   background-color: #654321 !important;
+   border: #d58433 2px solid !important;
+   color: white !important;
+   font-family: 'Roboto', sans-serif !important;
+}
+
+.ant-button-hover {
+   color: brown !important;
+   border: #d58433 5px !important;
+}
+
+.ant-btn:hover {
+   color: #d58433 !important;
+   /* background-color: #f0f0f0 !important;  */
+   border: #d58433 2px solid !important;
+}
+
+.ant-btn-primary {
+   background-color: #654321;
+   border: #d58433 2px solid;
+   color: white;
+   font-family: 'Roboto', sans-serif;
+}
+
+.ant-btn-secondary {
+   background-color: #654321;
+   border: #d58433 2px solid;
+   color: white;
+   font-family: 'Roboto', sans-serif;
+}
+
+/* .ant-tabs-tab-btn {
+   background-color: transparent;
+   color: #654321 !important;
+   font-family: 'gaegu' !important;
+} */
+
+.tabsStyl .ant-tabs-bar .ant-tabs-tab {
+   font-family: 'gaegu' !important;
+   border-color: transparent;
+   background: transparent;
+   color: #654321;
+   padding: 12 50px;
+}
+
+/* .ant-tab-label {
+   color: #654321 !important;
+   font-family: 'gaegu' !important;
+   color: #d58433 !important;
+} */
+.ant-tabs-tab:hover {
+   color: orange !important;
+   font-family: 'Gaegu', cursive;
+
+   border-bottom: none !important;
+   border: yellow dotted 2px !important;
+   color: #d58433 !important;
+
+   transition: none;
+}
+/* .ant-customTabs {
+   color: #654321 !important;
+   border-bottom: #654321 2px solid !important;
+} */
+
+/* .ant-tabs-nav {
+   border-bottom: #654321 dotted 2px !important;
+} */
+
+.ant-tabs-tab {
+   color: #363636 !important;
+   background-color: var(--secondary) !important;
+   font-family: 'Gaegu', cursive;
+   border: rgb(86, 85, 85) dotted 1px !important;
+   border-bottom: none !important;
+   /* background-color: #654321 !important; */
+
+   padding: 10px !important;
+   font-size: 1.2em !important;
+   color: rgb(34, 34, 34) !important;
+}
+
+.ant-tabs-tab-active {
+   background-color: var(--secondary) !important;
+   border: #d58433 4px solid !important;
+   border-bottom: none !important;
+   font-family: 'gaegu';
+   font-size: 1.6em !important;
+   font-style: underline !important;
+   color: #654321 !important;
+   padding: 10px !important;
+   border-bottom: none !important;
+}
+
+/* . {
+   font-family: 'Caveat Brush', cursive;
+   font-family: 'Chilanka', cursive;
+   font-family: 'Comic Neue', cursive;
+   font-family: 'Covered By Your Grace', cursive;
+   font-family: 'Crafty Girls', cursive;
+   font-family: 'Delicious Handrawn', cursive;
+   font-family: 'Fuzzy Bubbles', cursive;
+   font-family: 'Gaegu', cursive;
+   font-family: 'Gloria Hallelujah', cursive;
+   font-family: 'Gochi Hand', cursive;
+   font-family: 'Indie Flower', cursive;
+   font-family: 'Mynerve', cursive;
+   font-family: 'Nanum Pen Script', cursive;
+   font-family: 'Over the Rainbow', cursive;
+   font-family: 'Schoolbell', cursive;
+   font-family: 'Short Stack', cursive;
+   font-family: 'Waiting for the Sunrise', cursive;
+} */

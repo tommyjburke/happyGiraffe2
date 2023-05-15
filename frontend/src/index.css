@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles&family=Schoolbell&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Chilanka&family=Comic+Neue&family=Covered+By+Your+Grace&family=Crafty+Girls&family=Delicious+Handrawn&family=Fuzzy+Bubbles&family=Gaegu&family=Gloria+Hallelujah&family=Gochi+Hand&family=Indie+Flower&family=Mynerve&family=Nanum+Pen+Script&family=Over+the+Rainbow&family=Schoolbell&family=Short+Stack&family=Waiting+for+the+Sunrise&display=swap');
+
+/* . {
+   font-family: 'Caveat Brush';
+   font-family: 'Chilanka';
+   font-family: 'Comic Neue';
+   font-family: 'Covered By Your Grace';
+   font-family: 'Crafty Girls';
+   font-family: 'Delicious Handrawn';
+   font-family: 'Fuzzy Bubbles';
+   font-family: 'Gaegu';
+   font-family: 'Gloria Hallelujah';
+   font-family: 'Gochi Hand';
+   font-family: 'Indie Flower';
+   font-family: 'Mynerve';
+   font-family: 'Nanum Pen Script';
+
+   font-family: 'Schoolbell';
+   font-family: 'Short Stack';
+
+} */
+
+body {
+   /* font-family: 'fuzzy bubbles'; */
+   background-image: url('_media/giraffe_background5.png');
+
+   background-repeat: no-repeat;
+   background-size: cover;
+   opacity: 0.9;
+
+   /* background-repeat: no-repeat;
+   background-size: cover; */
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-attachment: fixed;
+}
+
+.giraffe_background {
+   position: relative;
+   height: 100%;
+   width: 100%;
+
+   align-items: center;
+   justify-content: center;
+
+   background-size: 100% 100%;
+   background-size: contain;
+   background-size: cover;
+   background-size: auto 100%;
+}
+
+.giraffe_background::before {
+   content: '';
+   background: url('./_media/giraffe_background5.png');
+   background-size: cover;
+   background-repeat: no-repeat;
+   position: absolute;
+   top: 0px;
+   right: 0px;
+   bottom: 0px;
+   left: 0px;
+   opacity: 0.2;
+   z-index: -1;
+   background-size: 100% 100%;
+   background-size: cover;
+   background-size: auto 100%;
+   opacity: 0.2;
+}
+
+.body {
+   font-family: 'Short Stack';
+   font-family: 'Gaegu';
+   font-size: x-large;
+}
+
+&:root {
+   font-family: 'fuzzy bubbles', serif !important;
+}
+
+.ant-message {
+   position: absolute;
+   bottom: 20px !important;
+   top: unset !important;
+}

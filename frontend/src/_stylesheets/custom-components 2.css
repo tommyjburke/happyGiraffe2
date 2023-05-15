@@ -1,0 +1,362 @@
+/* --primary: #654321;
+   --secondary: #f4bb3e; */
+
+/* . {
+   font-family: 'Caveat Brush';
+   font-family: 'Chilanka';
+   font-family: 'Comic Neue';
+   font-family: 'Covered By Your Grace';
+   font-family: 'Crafty Girls';
+   font-family: 'Delicious Handrawn';
+   font-family: 'Fuzzy Bubbles';
+   font-family: 'Gaegu';
+   font-family: 'Gloria Hallelujah';
+   font-family: 'Gochi Hand';
+   font-family: 'Indie Flower';
+   font-family: 'Mynerve';
+   font-family: 'Nanum Pen Script';
+
+   font-family: 'Schoolbell';
+   font-family: 'Short Stack';
+
+} */
+
+.exitButton {
+   font-family: 'Chilanka' !important;
+   position: relative;
+   left: -30px;
+   top: 15px;
+
+   background-color: grey;
+   border-radius: 15px;
+   padding-top: 0px !important;
+   padding-bottom: 30px;
+   font-family: 'Fuzzy Bubbles' !important;
+   color: white;
+   border: #654321 2px solid;
+   font-size: 0.7em;
+   /* height: 10px !important; */
+   opacity: 0.7 !important;
+}
+
+.label {
+   font-family: 'Chilanka' !important;
+}
+
+.pupilForm {
+   border-radius: 30px;
+   position: absolute;
+   top: 40%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   width: auto;
+   width: 600px;
+   background-color: none;
+   border: 2px solid black;
+   box-shadow: 44;
+   padding: 1px;
+   opacity: 1;
+}
+.card {
+   box-shadow: 5px 10px 10px rgb(26, 2, 2);
+   border-radius: 20px;
+   border: 4px solid #654321;
+   background-color: #f8c456;
+   padding: 20px;
+   font-family: ;
+   /* max-width: 800px; */
+}
+
+.card2 {
+   box-shadow: 5px 10px 10px rgb(26, 2, 2);
+   border-radius: 20px;
+   border: 4px solid #654321;
+   background-color: #f8c456;
+   fill-opacity: calc(100% - 0.5);
+   font-family: 'Chilanka' !important;
+   padding: 20px;
+}
+
+.card3 {
+   box-shadow: 5px 10px 10px rgb(26, 2, 2);
+   border-radius: 20px;
+   border: 4px solid #654321;
+   background-color: #d6c9aa;
+   fill-opacity: calc(100% - 0.5);
+   padding: 20px;
+   font-family: 'Short Stack' !important;
+}
+.card-wide {
+   box-shadow: 5px 10px 10px rgb(26, 2, 2);
+   border-radius: 20px;
+   border: 4px solid #654321;
+   background-color: #d6c9aa;
+   fill-opacity: calc(100% - 0.5);
+   padding: 20px;
+   width: 80%;
+   font-family: 'Short Stack' !important;
+}
+
+.card-lg {
+   box-shadow: 0 0 2px rgb(128, 128, 128);
+}
+
+.divider {
+   border-bottom: 1px solid rgb(182, 182, 182);
+   margin: 10px 0;
+}
+
+.loader-parent {
+   position: absolute;
+   inset: 0;
+   /* background-color: rgba(128, 125, 125, 0.677); */
+   z-index: 1; /* put it on top */
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.loader {
+   height: 800px;
+   width: 800px;
+   border: 5px solid #f3f3f3;
+   border-left-color: transparent;
+   border-radius: 20%;
+   animation: loader 0.8s linear infinite;
+}
+
+.option {
+   box-shadow: rgba(0, 0, 0, 0.638) 0px 0px 5px;
+   padding: 10px;
+   border-radius: 2px;
+   box-shadow: 5px 10px 10px rgb(26, 2, 2);
+   border-radius: 20px;
+   border: 2px solid #654321;
+   background-color: #d6c9aa;
+   fill-opacity: calc(100% - 0.5);
+}
+
+.selected-option {
+   box-shadow: rgba(0, 0, 0, 0.638) 0px 0px 1px;
+   padding: 10px;
+   border-radius: 2px;
+   border: 2px solid var(--primary);
+   box-shadow: 5px 10px 10px rgb(26, 2, 2);
+   border-radius: 20px;
+   border: 4px solid #654321;
+   background-color: #00ff04;
+   fill-opacity: calc(100% - 0.5);
+}
+
+.result {
+   box-shadow: rgba(75, 75, 75, 0.638) 0px 0px 2px;
+   padding: 30px;
+   color: white !important;
+   border-radius: 5px;
+}
+
+.lottie-animation {
+   height: 300px;
+}
+
+.timer {
+   background-color: red;
+   color: #d58433 !important;
+   padding: 10px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   height: 80px;
+   width: 80px;
+   border-radius: 50%;
+}
+
+@keyframes loader {
+   0% {
+      transform: rotate(0deg);
+   }
+   100% {
+      transform: rotate(360deg);
+   }
+}
+
+.countdown-modal {
+   position: fixed;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   background-color: rgba(255, 255, 255, 0.7);
+   border: 1px solid black;
+   padding: 1rem;
+}
+
+.bordered {
+   border: 1px dotted black;
+   padding: 12px;
+   border-radius: 15px;
+   width: 90%;
+}
+
+.bordered2 {
+   background-color: yellow;
+   border: 1px dashed #d58433;
+   padding: 2px;
+   border-radius: 15px;
+   width: auto;
+   align-items: center !important;
+   font-family: 'Caveat Brush';
+}
+
+/* . {
+   font-family: 'Caveat Brush';
+   font-family: 'Chilanka';
+   font-family: 'Comic Neue';
+   font-family: 'Covered By Your Grace';
+   font-family: 'Crafty Girls';
+   font-family: 'Delicious Handrawn';
+   font-family: 'Fuzzy Bubbles';
+   font-family: 'Gaegu';
+   font-family: 'Gloria Hallelujah';
+   font-family: 'Gochi Hand';
+   font-family: 'Indie Flower';
+   font-family: 'Mynerve';
+   font-family: 'Nanum Pen Script';
+
+   font-family: 'Schoolbell';
+   font-family: 'Short Stack';
+
+} */
+
+.centred {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 50px;
+   background-color: #d58433;
+   color: #333;
+}
+
+.countdown-timer2 {
+   position: absolute;
+   top: 0;
+
+   right: 0;
+   width: 100px;
+   height: 100px;
+   font-family: Short Stack;
+
+   background-color: orange;
+   border: red 2px solid;
+   border-radius: 50%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   opacity: 0.6;
+   font-weight: bold;
+   text-align: center;
+   cursor: default;
+   user-select: none;
+   pointer-events: none;
+}
+
+.countdown-timer2.flashing {
+   animation: flash 0.01s ease-in-out;
+   background-color: #d58433;
+   border: red;
+}
+
+@keyframes flash {
+   0% {
+      opacity: 0.6;
+   }
+   50% {
+      opacity: 0.3;
+   }
+   100% {
+      opacity: 0.6;
+   }
+}
+
+.filterInput {
+   color: '#d58433' !important;
+   text-align: 'left';
+   width: 20% !important;
+}
+
+.clearIcon {
+   border: none;
+   background: transparent;
+   position: relative;
+   left: -10px;
+   top: 13px;
+   bottom: 0;
+   z-index: 1;
+
+   cursor: pointer;
+   color: grey;
+   font-family: 'Arial';
+}
+
+.navbarFont {
+   font-family: 'Chilanka';
+   /* color: #f4bb3e !important; */
+   color: white !important;
+   float: right !important;
+}
+
+.buttonOnRight {
+   margin-left: auto !important;
+   font-family: 'gaegu' !important;
+   padding-top: 0px !important;
+   padding-bottom: 35px !important;
+   font-size: 1.5em;
+}
+
+.alignRight {
+   /* margin-left: auto; */
+   text-align: right !important;
+}
+
+.yellowBlueButton {
+   background-color: yellow !important;
+   color: blue !important;
+   font-family: 'Caveat Brush' !important;
+   font-size: 1.8em !important;
+   padding-top: 1px !important;
+
+   border: #d58433 2px dotted !important;
+   box-shadow: #654321 3px 3px 2px !important;
+   margin-bottom: 8px !important;
+}
+
+.yellowRedButton {
+   background-color: yellow !important;
+   color: red !important;
+   font-family: 'Caveat Brush' !important;
+   font-size: 1.8em !important;
+   padding-top: 1px !important;
+
+   border: #d58433 2px dotted !important;
+   box-shadow: #654321 3px 3px 2px !important;
+   margin-bottom: 8px !important;
+}
+
+/* . {
+   font-family: 'Caveat Brush';
+   font-family: 'Chilanka';
+   font-family: 'Comic Neue';
+   font-family: 'Covered By Your Grace';
+   font-family: 'Crafty Girls';
+   font-family: 'Delicious Handrawn';
+   font-family: 'Fuzzy Bubbles';
+   font-family: 'Gaegu';
+   font-family: 'Gloria Hallelujah';
+   font-family: 'Gochi Hand';
+   font-family: 'Indie Flower';
+   font-family: 'Mynerve';
+   font-family: 'Nanum Pen Script';
+
+   font-family: 'Schoolbell';
+   font-family: 'Short Stack';
+
+} */

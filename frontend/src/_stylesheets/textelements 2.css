@@ -1,0 +1,82 @@
+/* --primary: #654321;
+   --secondary: #f4bb3e; */
+
+.text-2xl {
+   font-size: 1.5rem;
+   line-height: 2rem;
+}
+.text-xl {
+   font-size: 1.25rem;
+   line-height: 1.75rem;
+}
+.text-lg {
+   font-size: 1.125rem;
+   line-height: 1.5rem;
+}
+.text-md {
+   font-size: 1rem;
+   line-height: 1.25rem;
+}
+.text-sm {
+   font-size: 0.875rem;
+   line-height: 1rem;
+}
+.text-xs {
+   font-size: 0.75rem;
+   line-height: 0.875rem;
+}
+
+h1 {
+   margin-bottom: 0px !important;
+   padding-bottom: 0 !important;
+   font-family: 'gaegu' !important;
+   font-style: underline !important;
+}
+.text-center {
+   text-align: center;
+}
+a {
+   color: var(--primary) !important;
+}
+a:hover {
+   color: var(--primary) !important;
+   text-decoration: underline !important;
+}
+
+i {
+   font-size: 18px !important;
+   cursor: pointer !important;
+}
+.underline {
+   color: darkgoldenrod !important;
+   text-decoration: underline !important;
+   font-family: 'fuzzy bubbles' !important;
+}
+
+.redFont {
+   color: red !important;
+}
+
+.greenFont {
+   color: green !important;
+}
+
+.blueFont {
+   color: blue !important;
+}
+
+.#d58433Font {
+   color: #f4bb3e !important;
+}
+
+.brownFont {
+   color: #654321 !important;
+}
+
+.brownBackground {
+   background-color: #654321 !important;
+}
+
+.#d58433Background {
+   background-color: #f4bb3e !important;
+}

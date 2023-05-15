@@ -1,0 +1,320 @@
+select,
+Select {
+   font-family: 'Chilanka' !important;
+   height: 50px !important;
+   padding: 5px 5px 5px 5px !important;
+   margin: 0px 0px 0px 0px !important;
+   border: 2px solid rgb(131, 130, 130) !important;
+   width: 90%;
+   border-radius: 10px !important;
+   font-size: 20px !important;
+   background-color: #654321;
+}
+
+input {
+   font-family: 'Chilanka' !important;
+   height: 50px !important;
+   padding: 5px 5px 5px 5px !important;
+   margin: 0px 0px 0px 0px !important;
+   border: 2px solid rgb(131, 130, 130) !important;
+   width: 90%;
+   border-radius: 10px !important;
+   font-size: 20px !important;
+   background-color: #654321;
+   color: white !important;
+}
+
+.w10 {
+   width: 10%;
+}
+
+.w20 {
+   width: 20%;
+}
+
+.w30 {
+   width: 30%;
+}
+
+.w40 {
+   width: 40%;
+}
+
+.w50 {
+   width: 50%;
+}
+
+.w60 {
+   width: 60%;
+}
+
+.w70 {
+   width: 70%;
+}
+
+.w80 {
+   width: 80%;
+}
+
+.w90 {
+   width: 90%;
+}
+
+.w100 {
+   width: 100%;
+}
+
+.h10 {
+   height: 10%;
+}
+
+.h20 {
+   height: 20%;
+}
+
+.input10 {
+   width: 10%;
+}
+
+.input20 {
+   width: 20%;
+}
+
+.input30 {
+   width: 30%;
+}
+
+.input40 {
+   width: 40%;
+   margin: 10px 5px 10px 5px !important;
+}
+
+.input50 {
+   width: 50%;
+}
+
+.input60 {
+   width: 60%;
+}
+
+.input70 {
+   width: 70%;
+}
+
+.input80 {
+   width: 80%;
+}
+
+.w400px {
+   width: 400px;
+}
+
+.w600px {
+   width: 600px;
+}
+
+.w800px {
+   width: 800px;
+}
+
+label {
+   font-family: 'Fuzzy Bubbles' !important;
+   font-size: 18px !important;
+   padding: 0px 0px 0px 0px !important;
+   margin: 0px 0px 0px 0px !important;
+}
+
+.subPrint {
+   font-size: 24px;
+   font-weight: 600;
+   color: #ca7c00;
+   margin-bottom: 10px;
+}
+
+/* button {
+   padding: 0px 25px;
+   border-radius: 2px;
+   height: 40px !important;
+   font-family: 'Courier New', Courier, monospace;
+} */
+.brown-button {
+   background-color: var(--primary);
+   color: white;
+   border-radius: 2px;
+   font-family: 'Fuzzy Bubbles';
+   padding: 5px 5px 5px 5px !important;
+   margin: 5px 5px 5px 5px !important;
+   width: 80px;
+   border-radius: 10px;
+   box-shadow: #654321 1px 1px 1px !important;
+}
+.grey-button {
+   background-color: lightgray;
+   color: black;
+   border-radius: 2px;
+   font-family: 'Fuzzy Bubbles';
+   padding: 5px 5px 5px 5px !important;
+   margin: 5px 5px 5px 5px !important;
+   width: 60px;
+   border-radius: 10px;
+   box-shadow: #654321 1px 1px 1px !important;
+}
+.secondary-contained-btn {
+   background-color: rgb(189, 179, 179);
+   color: black;
+   border-radius: 12px;
+   font-family: 'Fuzzy Bubbles';
+   padding: 5px 5px 5px 5px !important;
+   margin: 5px 5px 5px 5px !important;
+}
+
+.grey-button-right {
+   background-color: rgb(206, 205, 205) !important;
+   color: white;
+   color: black;
+   border-radius: 10px;
+   position: absolute;
+   bottom: 0;
+   right: 0 !important;
+
+   padding-left: 50px !important;
+   padding-right: 50px !important;
+   margin-right: 30px !important;
+
+   font-family: 'Fuzzy Bubbles';
+   font-size: 0.8em !important;
+   width: 140px !important;
+   margin-top: 10px;
+   margin-bottom: 10px;
+   display: flex;
+   width: 180px !important;
+   /* justify-content: flex-end; */
+   /* align-items: flex-end; */
+}
+
+.grey-button-centre {
+   background-color: rgb(206, 205, 205) !important;
+   color: white;
+   border-radius: 8px;
+
+   padding-left: 5 !important;
+   padding-right: 5 !important;
+
+   margin: auto;
+   font-family: 'Fuzzy Bubbles';
+   font-size: 0.8em !important;
+   width: 180px !important;
+}
+
+.green-button-right {
+   background-color: rgb(0, 201, 0) !important;
+   color: black;
+   border-radius: 18px;
+   border-radius: 18px;
+   position: absolute;
+   bottom: 0;
+   right: 0 !important;
+
+   padding-left: 30px !important;
+   padding-right: 50px !important;
+   padding-bottom: 25px !important;
+   padding-top: 0px !important;
+   margin-right: 30px !important;
+
+   font-family: 'Fuzzy Bubbles';
+   font-size: 0.8em !important;
+   width: 180px !important;
+   margin-top: 10px;
+   margin-bottom: 10px;
+   display: flex;
+}
+
+.green-button-centre {
+   background-color: rgb(0, 201, 0) !important;
+   color: black;
+   border-radius: 18px;
+
+   padding-left: 15 !important;
+   padding-right: 15 !important;
+   font-family: 'Fuzzy Bubbles' !important;
+   font-size: 0.8em !important;
+   width: 140px !important;
+}
+
+.centre {
+   text-align: center;
+}
+
+.go-button {
+   background-color: rgb(1, 114, 1) !important;
+   color: white;
+   border-radius: 100%;
+   border: solid 2px !important;
+   font-family: 'Fuzzy Bubbles';
+   padding: 5px 10px 30px 10px;
+   margin: 0px 20px 0px 20px !important;
+}
+
+.chooseButton {
+   background-color: green;
+   color: white;
+   border-radius: 15px;
+   border: solid 2px black !important;
+   font-family: 'Fuzzy Bubbles';
+   padding: 5px 5px 5px 5px;
+   margin: 1px !important;
+   font-size: 0.7em;
+   font-family: 'Gaegu' !important;
+}
+
+/* --primary: #654321;
+   --secondary: #f4bb3e; */
+
+/* . {
+   font-family: 'Caveat Brush';
+   font-family: 'Chilanka';
+   font-family: 'Comic Neue';
+   font-family: 'Covered By Your Grace';
+   font-family: 'Crafty Girls';
+   font-family: 'Delicious Handrawn';
+   font-family: 'Fuzzy Bubbles';
+   font-family: 'Gaegu';
+   font-family: 'Gloria Hallelujah';
+   font-family: 'Gochi Hand';
+   font-family: 'Indie Flower';
+   font-family: 'Mynerve';
+   font-family: 'Nanum Pen Script';
+
+   font-family: 'Schoolbell';
+   font-family: 'Short Stack';
+
+} */
+
+.primary-outlined-btn {
+   background-color: #654321 !important;
+   color: white !important;
+
+   border: 2px solid;
+   border-radius: 15px;
+   padding-bottom: -20px !important;
+   padding-top: -20px !important;
+   margin-top: 5px !important;
+   height: 40px !important;
+   display: block; /* set the display property to block */
+   margin: 0 auto; /* set the horizontal margin to auto */
+}
+
+/* Form {
+   margin: 20px;
+   padding: 20px;
+} */
+
+.centre-screen {
+   margin: 0 auto;
+   width: 100%;
+
+   padding: 10px;
+   display: flex;
+   align-items: center !important; /* vertical alignment */
+   justify-content: center !important; /* horizontal alignment */
+}
