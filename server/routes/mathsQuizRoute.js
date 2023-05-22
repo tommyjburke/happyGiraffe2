@@ -29,6 +29,46 @@ router.post('/add-maths-quiz', authMiddleware, async (req, res) => {
    }
 })
 
+router.post('/update-maths-by-id', authMiddleware, async (req, res) => {
+   const { divsData, gameOptions } = req.body
+   const userId = req.body.userId
+   const quizId = req.body.quizId
+   console.log('REQ BODY', req.body)
+   console.log('QUIZ ID', req.body.quizId)
+   console.log('REQ BODY userId', req.body.userId)
+
+   try {
+      await MathsQuizModel.findByIdAndUpdate(quizId, req.body)
+      res.send({
+         message: 'Maths Quiz updated good good',
+         success: true,
+      })
+   } catch (error) {
+      res.status(500).send({
+         message: error.message,
+         data: error,
+         success: false,
+      })
+      console.log('ERROR', error)
+   }
+})
+
+// router.post('/edit-multi-by-id', authMiddleware, async (req, res) => {
+//    try {
+//       await MultiQuiz.findByIdAndUpdate(req.body.multiId, req.body)
+//       res.send({
+//          message: 'MultiQuiz edited good good',
+//          success: true,
+//       })
+//    } catch (error) {
+//       res.status(500).send({
+//          message: error.message,
+//          data: error,
+//          success: false,
+//       })
+//    }
+// })
+
 router.post('/get-all-maths-by-teacher-id', authMiddleware, async (req, res) => {
    const { userId } = req.body
 

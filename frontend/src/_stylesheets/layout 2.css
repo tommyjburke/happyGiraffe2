@@ -72,8 +72,9 @@
 }
 
 .menu-item:hover {
-   color: #d58433 !important;
+   /* color: #d58433 !important; */
    font-style: italic;
+   color: yellow !important;
 }
 
 .active-menu-item {

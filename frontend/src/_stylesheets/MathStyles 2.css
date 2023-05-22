@@ -43,7 +43,7 @@ font-family: 'Swanky and Moo Moo';
 }
 
 .giraffe_background::before {
-   content: '';
+   /* content: '';
    /* background: url('giraffe_background5.png'); */
    background-size: cover;
    background-repeat: no-repeat;
@@ -56,7 +56,7 @@ font-family: 'Swanky and Moo Moo';
    z-index: -1;
    background-size: 100% 100%;
    background-size: cover;
-   background-size: auto 100%;
+   background-size: auto 100%; */
 }
 
 .uiInput {

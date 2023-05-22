@@ -58,13 +58,12 @@ export default function TakeMathsQuiz({ quizId, onClose, assignmentId }) {
    console.log('Pupil id: ' + pupilId)
    //
 
-   const isMountedRef = useRef(false)
-
    // function generateReward() {
    //    const randomNum = Math.floor(Math.random() * 54) + 1
    //    const newReward = require(`../../_media/mygifs/${randomNum}.gif`)
    //    setRewards((prevRewards) => [...prevRewards, newReward])
    // }
+   const isMountedRef = useRef(false)
    const rewardsRef = useRef(null)
    function getReward() {
       rewardsRef.current.generateReward()
@@ -161,7 +160,7 @@ export default function TakeMathsQuiz({ quizId, onClose, assignmentId }) {
    }
 
    useEffect(() => {
-      // Calculate the percentage of right answers when the game is completed
+      // Calculate the percentage of right answers when game completed
       const soFar = right + wrong
       const finalPercentage = Math.round((right / numQuestions) * 100)
       const currentPercentage = Math.round((right / soFar) * 100)
@@ -181,10 +180,6 @@ export default function TakeMathsQuiz({ quizId, onClose, assignmentId }) {
       setUpdateState(true)
       setIsGreyQuestion('greyQuestion !important')
       setShowCountdown(false)
-
-      // const message = `You got ${right} out of ${numQuestions} correct. Your score is ${percent}%`
-
-      // const scoreObj = { percent }
       setIsGreyQuestion('greyQuestion !important')
       setShowResults(true)
    }
@@ -208,7 +203,7 @@ export default function TakeMathsQuiz({ quizId, onClose, assignmentId }) {
       console.log('Assignment ID: ' + assignmentId)
 
       if (!activeKid) {
-         message.error('No Pupil. ....EXITING...')
+         message.info('YOU MUST BE A PUPIL IF U WANNA SAVE RESULTS!')
          return
       }
 
@@ -250,7 +245,7 @@ export default function TakeMathsQuiz({ quizId, onClose, assignmentId }) {
          const userInput = (
             <input
                disabled={divData.inputDisabled || disableInputs}
-               className='boxAnswer'
+               className='boxInput'
                type='number'
                value={divData.inputValue}
                onChange={(event) => handleInputChange(event, index)}
@@ -289,7 +284,7 @@ export default function TakeMathsQuiz({ quizId, onClose, assignmentId }) {
                <span className=''>
                   {x} {operator} {y} = {z}
                   {/* <input
-                     className='boxAnswer'
+                     className='boxInput'
                      type='number'
                      value={divData.inputValue}
                      onChange={(event) => handleInputChange(event, index)}
@@ -328,7 +323,7 @@ export default function TakeMathsQuiz({ quizId, onClose, assignmentId }) {
          <h2 style={{ fontFamily: 'schoolbell' }}>
             <u>{title}</u>
          </h2>
-         <h3>Assignment: {assignmentId}</h3>
+         {/* <h3>Assignment: {assignmentId}</h3> */}
 
          {showNotes && (
             <Notes
@@ -345,17 +340,6 @@ export default function TakeMathsQuiz({ quizId, onClose, assignmentId }) {
          )}
          {showQuiz && (
             <>
-               {/* <div className='pokemons'>
-                  {rewards.map((reward, index2) => (
-                     <img
-                        className='pokemons2'
-                        key={index2}
-                        src={reward}
-                        height='45px'
-                        alt={`Pokemon ${index2}`}
-                     />
-                  ))}
-               </div> */}
                <Rewards rewards={rewards} ref={rewardsRef} />
                {showScoreboard && (
                   <>
@@ -363,17 +347,8 @@ export default function TakeMathsQuiz({ quizId, onClose, assignmentId }) {
                         currentPercentage={currentPercentage}
                         right={right}
                         wrong={wrong}
+                        finalScore={finalScore}
                      />
-                     {/* <div
-                        className='flex flex-col items-center gap-2 greenFont'
-                        style={{ fontFamily: 'schoolbell' }}
-                     >
-                        {currentPercentage}%
-                     </div>
-                     <div>
-                        ✅ <span className='scoreGreen'>{right}</span> :{' '}
-                        <span className='scoreRed'>{wrong}</span>❌
-                     </div> */}
                   </>
                )}
                <div>{renderDivs()}</div>

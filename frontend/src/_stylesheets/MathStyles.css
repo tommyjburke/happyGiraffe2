@@ -29,7 +29,7 @@ font-family: 'Swanky and Moo Moo';
 }
 
 .giraffe_background {
-   position: relative;
+   /* position: relative;
    height: 100%;
    width: 100%;
 
@@ -39,12 +39,12 @@ font-family: 'Swanky and Moo Moo';
    background-size: 100% 100%;
    background-size: contain;
    background-size: cover;
-   background-size: auto 100%;
+   background-size: auto 100%; */
 }
 
 .giraffe_background::before {
    content: '';
-   /* background: url('giraffe_background5.png'); */
+
    background-size: cover;
    background-repeat: no-repeat;
    position: absolute;
@@ -273,7 +273,7 @@ body {
    color: #654321;
 }
 
-.boxAnswer {
+.boxInput {
    font-size: 1.1em !important;
    padding: 10px;
    text-align: center;
@@ -291,6 +291,68 @@ body {
    font-family: 'comic sans ms' !important;
    height: 50px !important;
    color: rgb(1, 142, 1) !important;
+}
+
+.boxOp {
+   font-size: 1.3em !important;
+   padding: 10px;
+   text-align: center;
+   width: 60px;
+   background-color: rgba(213, 213, 213, 0.791);
+   border: 1px solid rgb(218, 131, 0);
+   border-radius: 10px;
+
+   font-size: 1.2em;
+
+   font-family: 'Short Stack' !important;
+   height: 50px !important;
+   color: brown !important;
+}
+
+.boxAns {
+   font-size: 1.3em !important;
+   padding: 10px;
+   text-align: center;
+   width: 60px;
+   background-color: rgba(128, 128, 128, 0.791);
+   border: 1px solid rgb(218, 131, 0);
+   border-radius: 10px;
+
+   font-size: 1.2em;
+
+   font-family: 'Short Stack' !important;
+   height: 50px !important;
+   color: yellow !important;
+}
+
+.boxHead {
+   font-size: 1.3em !important;
+   padding: 10px;
+   text-align: center;
+   width: 60px;
+   background-color: var(--secondary);
+   border: 0px transparent !important;
+   border-radius: 10px;
+
+   font-size: 1.2em;
+
+   font-family: 'Short Stack' !important;
+   height: 50px !important;
+   color: #654321 !important;
+}
+.boxHead2 {
+   font-size: 1.3em !important;
+   padding: 10px;
+   text-align: center;
+   width: 60px;
+   background-color: var(--secondary);
+   border: 0px transparent !important;
+   border-radius: 10px;
+
+   font-family: 'Short Stack' !important;
+   height: 50px !important;
+   color: #654321 !important;
+   font-size: 0.6em !important;
 }
 
 .boxAnswerTransparent {
@@ -630,17 +692,31 @@ section.range-slider input[type='range']::-moz-focus-outer {
 }
 
 .indexNum {
-   font-size: 0.5em;
-   font-family: 'Courier New', Courier, monospace;
+   font-size: 0.9em;
+   font-family: 'Fuzzy Bubbles', Courier, monospace;
    background-color: #654321;
    color: #f8e36f;
    font-weight: bold;
    padding: 10px 12px 10px 14px;
    margin-right: 20px;
    margin-left: 10px;
-   border: #000000 2px solid;
+   /* border: #000000 1px solid; */
    border-radius: 50%;
    box-shadow: black 0px 0px 5px 0px;
+   z-index: 9 !important;
+}
+.indexNum2 {
+   font-size: 0.9em;
+   font-family: 'Fuzzy Bubbles', Courier, monospace;
+   background-color: transparent;
+   color: #f8e36f;
+   font-weight: bold;
+   padding: 10px 12px 10px 14px;
+   margin-right: 20px;
+   margin-left: 10px;
+   /* border: #000000 1px solid; */
+   border-radius: 50%;
+   color: var(--secondary);
 }
 
 .spanQuestion {

@@ -1,8 +1,7 @@
-import { Col, Form, message, Row, Table, Tabs, Checkbox, Input } from 'antd'
+import { Form, message, Table, Tabs, Checkbox, Input } from 'antd'
 
 import {
    addMulti,
-   // deleteMultiById,
    deleteQuestionById,
    editMultiById,
    getMultiById,
@@ -14,9 +13,10 @@ import { useDispatch } from 'react-redux'
 import { useEffect, useState } from 'react'
 import AddUpdateQuestion from './AddUpdateQuestion'
 import moment from 'moment'
+import { EditTwoTone, DeleteTwoTone } from '@ant-design/icons'
 
 import ReactQuill from 'react-quill'
-import 'react-quill/dist/quill.snow.css' // import the styles
+import 'react-quill/dist/quill.snow.css' // import the quill styles
 
 export default function AddUpdateQuiz() {
    const dispatch = useDispatch()
@@ -27,11 +27,20 @@ export default function AddUpdateQuiz() {
    const [multiData, setMultiData] = useState(null)
    const [showQuestionModal, setShowQuestionModal] = useState(false)
    const [selectedQuestion, setSelectedQuestion] = useState(null)
-   const [title, setTitle] = useState('')
-   const [useCountdown, setUseCountdown] = useState(false)
-   const [countdownSeconds, setCountdownSeconds] = useState(30)
-   const [notes, setNotes] = useState('')
-   const [content, setContent] = useState('')
+   const [title, setTitle] = useState('' || multiData?.title)
+   const [useCountdown, setUseCountdown] = useState(multiData?.useCountdown || true)
+
+   console.log('MULTI DATA: ', multiData)
+   console.log('useCountdown: ', useCountdown)
+   console.log('useCountdown: ', multiData?.useCountdown)
+
+   const [countdownSeconds, setCountdownSeconds] = useState(
+      multiData?.countdownSeconds || 30
+   )
+
+   console.log('countdownSeconds: ', countdownSeconds)
+   const [notes, setNotes] = useState('' || multiData?.notes)
+   const [content, setContent] = useState('' || multiData?.notes)
 
    const getMultiData = async () => {
       try {
@@ -84,10 +93,6 @@ export default function AddUpdateQuiz() {
          title: 'Question',
          dataIndex: 'question',
       },
-      // {
-      //    title: 'Correct Option',
-      //    dataIndex: 'correctOption',
-      // },
       {
          title: 'Correct Answer',
          dataIndex: 'correctOption',
@@ -117,20 +122,17 @@ export default function AddUpdateQuiz() {
          dataIndex: 'action',
          render: (text, record) => (
             <div className='flex gap-3'>
-               <i
-                  className='ri-edit-line'
+               <EditTwoTone
                   onClick={() => {
                      setSelectedQuestion(record)
                      setShowQuestionModal(true)
                   }}
-               ></i>
-
-               <i
-                  className='ri-delete-bin-line'
+               ></EditTwoTone>
+               <DeleteTwoTone
                   onClick={() => {
                      deleteQuestion(record._id)
                   }}
-               ></i>
+               ></DeleteTwoTone>
             </div>
          ),
       },
@@ -162,40 +164,6 @@ export default function AddUpdateQuiz() {
       theme: 'snow',
    }
 
-   // SUBMIT FUNCTION
-   // const onFinish = async (values) => {
-   //    const payload = {
-   //       title: title,
-   //       useCountdown: useCountdown,
-   //       countdownSeconds: countdownSeconds,
-   //       content: content,
-   //    }
-   //    console.log('Payload: ', payload)
-   //    try {
-   //       dispatch(ShowLoading())
-   //       let response
-
-   //       if (params.id) {
-   //          response = await editMultiById({
-   //             ...payload,
-   //             multiId: params.id,
-   //          })
-   //       } else {
-   //          response = await addMulti(payload)
-   //       }
-   //       if (response.success) {
-   //          message.success(response.message)
-   //          navigate('/teacher/quiz')
-   //       } else {
-   //          message.error(response.message)
-   //       }
-   //       dispatch(HideLoading())
-   //    } catch (error) {
-   //       dispatch(HideLoading())
-   //       message.error(error.message)
-   //    }
-   // }
-
    const onFinish = async (values) => {
       if (title === '') {
          message.error('Please enter a title')
@@ -217,6 +185,7 @@ export default function AddUpdateQuiz() {
                ...payload,
                multiId: params.id,
             })
+            return
          } else {
             response = await addMulti(payload)
          }
@@ -225,11 +194,6 @@ export default function AddUpdateQuiz() {
 
             // Retrieve the newly created document's ID
             const newId = response.data
-
-            // Redirect the user to the next page using the ID
-            // navigate(`/teacher/quiz/${newId}`)
-
-            // console.log('NEW ID String: ', newId.toString())
             console.log('NEW ID: ', newId)
 
             navigate(`/teacher/edit-multi-by-id/${newId}`)
@@ -250,6 +214,7 @@ export default function AddUpdateQuiz() {
             <h1>{params.id ? 'Update Quiz' : 'Create Quiz'}</h1>
          </div>
          <div className='divider'></div>
+         {params?.id}
 
          {(multiData || !params.id) && (
             <Form onFinish={onFinish} initialValues={multiData}>
@@ -263,13 +228,6 @@ export default function AddUpdateQuiz() {
                   animated
                >
                   <Tabs.TabPane tab='Quiz Details' key='1'>
-                     {/* <Row gutter={[16, 0]}>
-                        <Col className='gutter-row' span={12}>
-                           <Form.Item label='Quiz Title' name='title'>
-                              <input type='text' className='form-control' />
-                           </Form.Item>
-                        </Col> */}
-
                      <div className='giraffe_background'>
                         <div className='mathOptions'>
                            <h2>Multiple Choice Quiz Generator</h2>
@@ -315,14 +273,15 @@ export default function AddUpdateQuiz() {
                               (Optional) Notes for pupil:
                               <div className='notesQuill !important'>
                                  <ReactQuill
-                                    value={content}
                                     onChange={setContent}
                                     modules={options.modules}
                                     theme={options.theme}
                                     placeholder='Write any instructions for pupil(s) here.....'
                                     className='notesQuill !important'
+                                    value={content || multiData.notes}
                                  />
                               </div>
+                              {/* {multiData.notes} */}
                            </div>
                         </div>
 

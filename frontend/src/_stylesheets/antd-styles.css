@@ -305,6 +305,14 @@ td {
    background-color: yellow !important;
 }
 
+.ant-menu-title-content {
+   color: white !important;
+}
+
+.ant-menu-title-content:hover {
+   color: yellow !important;
+}
+
 /* . {
    font-family: 'Caveat Brush', cursive;
    font-family: 'Chilanka', cursive;

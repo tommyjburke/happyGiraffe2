@@ -74,7 +74,8 @@ const userSchema = new Schema(
       pupils: [
          {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'PupilModel',
+            ref: 'pupils',
+            // ref: 'PupilModel',
          },
       ],
    },

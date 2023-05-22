@@ -14,6 +14,8 @@ export default function UpdateMathsQuiz() {
    const [gameOptions, setGameOptions] = useState({ useCountdown: false })
    const [values, setValues] = useState([])
    const [isChecked, setIsChecked] = useState(false)
+   const [thisSumResult, setThisSumResult] = useState()
+   const [thisSumResult2, setThisSumResult2] = useState()
 
    const dispatch = useDispatch()
    const navigate = useNavigate()
@@ -39,6 +41,34 @@ export default function UpdateMathsQuiz() {
          ],
       },
       theme: 'snow',
+   }
+
+   const updateMathsQuizById = async () => {
+      console.log('GameOptions: ', gameOptions)
+      console.log('DivsData: ', divsData)
+      console.log('UseCountdown: ', gameOptions.useCountdown)
+      console.log('ParamsId: ', params.id)
+      // quizId = params.id
+
+      try {
+         dispatch(ShowLoading())
+         const response = await updateMathsById({
+            quizId: params.id,
+            divsData,
+            gameOptions,
+         })
+         console.log('Response:', response)
+         if (response.success) {
+            message.success('Maths quiz updated successfully')
+            // navigate('/teacher/quiz')
+         } else {
+            message.error(response.message)
+         }
+         dispatch(HideLoading())
+      } catch (error) {
+         dispatch(HideLoading())
+         message.error(error.message)
+      }
    }
 
    const getMathsDataById = async () => {
@@ -76,13 +106,55 @@ export default function UpdateMathsQuiz() {
    }, [])
 
    useEffect(() => {
+      // console.log('DivsData: ', divsData)
       setValues(divsData)
    }, [divsData])
 
-   const handleInputChange = (index, field, newValue) => {
-      console.log('index: ', index, 'field: ', field, 'newValue: ', newValue)
+   const handleDivsDataChange = (index, spanIndex, newValue) => {
+      console.log('newValue ', newValue)
       const updatedValues = [...values]
-      updatedValues[index].spanValues[field] = newValue
+
+      // SPAN VALUES INDEXES
+      // 0: first number in sum (e.g. 2)
+      // 1: second number in sum (e.g. 3)
+      // 2: result of sum (e.g. 5) - spanValues[2] = 5
+      // 3: operator (e.g. +) - spanValues[3] = +
+      // 4: hidden position (A or B or C)
+      // 5: Actual correct answer based on hidden position
+
+      switch (spanIndex) {
+         case 0:
+            updatedValues[index].spanValues[spanIndex] = newValue
+            updatedValues[index].spanValues[2] = eval(
+               `${newValue} ${updatedValues[index].spanValues[3]} ${updatedValues[index].spanValues[1]}`
+            )
+            break
+         case 1:
+            updatedValues[index].spanValues[spanIndex] = newValue
+            updatedValues[index].spanValues[2] = eval(
+               `${updatedValues[index].spanValues[0]} ${updatedValues[index].spanValues[3]} ${newValue}`
+            )
+            break
+         case 3:
+            updatedValues[index].spanValues[spanIndex] = newValue
+            updatedValues[index].spanValues[2] = eval(
+               `${updatedValues[index].spanValues[0]} ${newValue} ${updatedValues[index].spanValues[1]}`
+            )
+         case 4:
+            console.log('value pre :', newValue)
+            updatedValues[index].spanValues[spanIndex] = newValue
+            updatedValues[index].spanValues[5] = updatedValues[index].spanValues[newValue]
+            console.log('value post :', newValue)
+            console.log(
+               'updatedValues[index].spanValues[5] :',
+               updatedValues[index].spanValues[5]
+            )
+      }
+
+      // console.log('updatedValues: ', updatedValues)
+      // updatedValues[index].spanValues[spanIndex] = newValue
+
+      console.log('updatedValues: ', JSON.stringify(updatedValues[index]))
       setValues(updatedValues)
    }
 
@@ -93,7 +165,7 @@ export default function UpdateMathsQuiz() {
 
    return (
       <>
-         Title: {gameOptions.title} <br />
+         {/* Title: {gameOptions.title} <br />
          Notes: {gameOptions.notes}
          <br />
          UseCountdown: {gameOptions.useCountdown.toString() || 'false'}
@@ -101,8 +173,8 @@ export default function UpdateMathsQuiz() {
          Seconds: {gameOptions.countdownSeconds}
          <br />
          DivsData: {JSON.stringify(divsData)}
-         <br />
-         <h3>Update Maths Quiz</h3>
+         <br /> */}
+         <h1>Update Maths Quiz</h1>
          <Form>
             {/* {JSON.stringify(gameOptions)} */}
 
@@ -149,7 +221,7 @@ export default function UpdateMathsQuiz() {
                      <br />
                      <input
                         type='number'
-                        className='boxAnswer'
+                        className='boxInput'
                         placeholder='Enter Quiz Score'
                         value={gameOptions.countdownSeconds}
                         onChange={(e) =>
@@ -165,19 +237,31 @@ export default function UpdateMathsQuiz() {
             </div>
          </Form>
          <div className='optionsBordered2'>
+            <div>
+               <span className='indexNum2'>n</span>
+               <input disabled className='boxHead' value='A' />
+               <input disabled className='boxHead' value='+' />
+               <input disabled className='boxHead' value='B' />={' '}
+               <input disabled className='boxHead' value='C' />{' '}
+               <input disabled className='boxHead2' value='position' />
+            </div>
             {divsData.map((data, index) => (
                <div key={data._id}>
-                  {index + 1}.{' '}
+                  <span className='indexNum'>{index + 1}.</span>{' '}
                   <input
-                     className='boxAnswer'
+                     //  ~~~~~~~~~~~~ a ~~~~~~~~~~~~
+                     min='1'
+                     className='boxInput'
                      type='number'
-                     value={data.spanValues[0] || ''}
-                     onChange={(e) => handleInputChange(index, 0, e.target.value)}
+                     value={parseInt(data.spanValues[0]) || ''}
+                     onChange={(e) => {
+                        handleDivsDataChange(index, 0, parseInt(e.target.value))
+                     }}
                   />
                   <select
-                     className='boxAnswer'
+                     className='boxOp'
                      value={data.spanValues[3]}
-                     onChange={(e) => handleInputChange(index, 3, e.target.value)}
+                     onChange={(e) => handleDivsDataChange(index, 3, e.target.value)}
                   >
                      <option value='+'>+</option>
                      <option value='-'>-</option>
@@ -185,38 +269,35 @@ export default function UpdateMathsQuiz() {
                      <option value='/'>/</option>
                   </select>
                   <input
-                     className='boxAnswer'
+                     //  ~~~~~~~~~~~~ b ~~~~~~~~~~~~
+                     className='boxInput'
+                     min='1'
                      type='number'
-                     value={data.spanValues[1]}
-                     onChange={(e) => handleInputChange(index, 1, e.target.value)}
+                     value={parseInt(data.spanValues[1]) || ''}
+                     onChange={(e) => {
+                        handleDivsDataChange(index, 1, parseInt(e.target.value))
+                     }}
                   />
                   ={' '}
                   <input
                      disabled
-                     className='boxAnswer'
+                     className='boxAns'
                      value={eval(
-                        data.spanValues[0] + data.spanValues[3] + data.spanValues[1]
+                        parseInt(data.spanValues[0]) +
+                           data.spanValues[3] +
+                           parseInt(data.spanValues[1])
                      )}
-                     onChange={(e) =>
-                        handleInputChange(
-                           index,
-                           2,
-                           eval(
-                              data.spanValues[0] + data.spanValues[3] + data.spanValues[1]
-                           )
-                        )
-                     }
                   />{' '}
                   {/* <input
-                  className='boxAnswer'
+                  className='boxInput'
                   type='number'
                   value={data.spanValues[4]}
-                  onChange={(e) => handleInputChange(index, 4, e.target.value)}
+                  onChange={(e) => handleDivsDataChange(index, 4, e.target.value)}
                /> */}
                   <select
-                     className='boxAnswer'
+                     className='boxOp'
                      value={data.spanValues[4]}
-                     onChange={(e) => handleInputChange(index, 4, e.target.value)}
+                     onChange={(e) => handleDivsDataChange(index, 4, e.target.value)}
                   >
                      <option value={0}>A</option>
                      <option value={1}>B</option>
@@ -227,7 +308,7 @@ export default function UpdateMathsQuiz() {
             <button
                type='submit'
                style={{ float: 'right', margin: '0' }}
-               onClick={handleSave}
+               onClick={updateMathsQuizById}
                disabled={isEdited}
             >
                Save

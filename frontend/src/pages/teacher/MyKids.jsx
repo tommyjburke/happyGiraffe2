@@ -6,11 +6,14 @@ import { useDispatch, useSelector } from 'react-redux'
 import { ShowLoading, HideLoading } from '../../redux/loaderSlice'
 import { Modal, Box } from '@mui/material'
 import { EditTwoTone, DeleteTwoTone } from '@ant-design/icons'
+import { updatePupil, deletePupil } from '../../_apiCalls/apiPupils'
+import { get } from 'mongoose'
 
 export default function MyKids() {
    const [open, setOpen] = useState(false)
    const handleOpen = () => setOpen(true)
    const handleClose = () => setOpen(false)
+
    const getMyPupilsData = async () => {
       try {
          dispatch(ShowLoading())
@@ -28,6 +31,54 @@ export default function MyKids() {
          dispatch(HideLoading())
          message.error('Something went wrong', error.message)
       }
+   }
+
+   const deleteChild = async (pupilId2) => {
+      const pupilId = { pupilId: pupilId2 }
+      console.log('pupilId', pupilId)
+      try {
+         dispatch(ShowLoading())
+         const response = await deletePupil(pupilId)
+         console.log('USER PUPILS ', response.data)
+         dispatch(HideLoading())
+         if (response.success) {
+            // setUserPupils(response.data)
+            message.success('Pupil deleted successfully')
+            console.log('USERPUPILS 2', userPupils)
+         } else {
+            message.error('PRoBLEM ', response.message)
+            console.log('PROBLEM', response.message)
+         }
+      } catch (error) {
+         console.log(error)
+         dispatch(HideLoading())
+         message.error('Something went wrong', error.message)
+      }
+      getMyPupilsData()
+   }
+
+   const updateChild = async (pupilId, payload) => {
+      console.log('pupilId', pupilId)
+      console.log('payload', payload)
+
+      // try {
+      //    dispatch(ShowLoading())
+      //    const response = await updatePupil(pupilId, payload)
+      //    console.log('USER PUPILS ', response.data)
+      //    dispatch(HideLoading())
+      //    if (response.success) {
+      //       // setUserPupils(response.data)
+      //       console.log('USERPUPILS 2', userPupils)
+      //    } else {
+      //       message.error('PRoBLEM ', response.message)
+      //       console.log('PROBLEM', response.message)
+      //    }
+      // } catch (error) {
+      //    console.log(error)
+      //    dispatch(HideLoading())
+      //    message.error('Something went wrong', error.message)
+      // }
+      // getMyPupilsData()
    }
 
    useEffect(() => {
@@ -160,7 +211,10 @@ export default function MyKids() {
          dataIndex: 'delete',
          width: '5%',
          render: (value, record) => (
-            <Popconfirm title='confirm deletion?' onConfirm={() => handleDelete(record)}>
+            <Popconfirm
+               title='confirm deletion?'
+               onConfirm={() => deleteChild(record.pupilId)}
+            >
                <DeleteTwoTone onClick={() => console.log(record.pupilId)} />
             </Popconfirm>
          ),

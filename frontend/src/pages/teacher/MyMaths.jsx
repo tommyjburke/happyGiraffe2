@@ -14,6 +14,9 @@ export default function MyMaths() {
    const [multis, setMultis] = useState([])
    const [maths, setMaths] = useState([])
 
+   const opts = ['x', '/', '+', '-']
+   const mappedOpts = (operators) => operators.map((opIndex) => opts[opIndex]).join(' ')
+
    const dispatch = useDispatch()
 
    // MUST COMPLY WITH QUIZ MODEL IN BACKEND
@@ -38,7 +41,7 @@ export default function MyMaths() {
          title: 'Operators',
          dataIndex: ['gameOptions', 'operators'],
          key: 'operators',
-         render: (operators) => operators.join(', '),
+         render: mappedOpts,
       },
       {
          title: 'Use Countdown',

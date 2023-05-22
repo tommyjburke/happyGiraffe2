@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { ShowLoading, HideLoading } from '../../redux/loaderSlice'
 import { getAllAssignmentsByPupilId } from '../../_apiCalls/apiAssignments'
-import { message, Col, Row } from 'antd'
+import { message, Col, Row, Button } from 'antd'
 import TakeMathsQuiz from './TakeMathsQuiz'
 import TakeMultiQuiz from './TakeMultiQuiz'
 import Greeting from '../../components/Greeting'
@@ -21,8 +21,8 @@ function Homework() {
    const [selectedMathsQuizId, setSelectedMathsQuizId] = useState(null)
    const [showMathsQuiz, setShowMathsQuiz] = useState(false)
    const [noHomework, setNoHomework] = useState(false)
-
    const [assignments, setAssignments] = useState([])
+   const [sortByDate, setSortByDate] = useState(false) // State for sorting order
 
    function startMultiQuiz(quizId, assignmentId) {
       console.log('START MULTI QUIZ CALLED')
@@ -61,12 +61,25 @@ function Homework() {
       // console.log('GET HOEMWOWRK CALLED')
    }
 
+   const updatedDates = assignments.map((assignment) => assignment.updatedAt)
+   const sortedAssignments = [...assignments].sort((a, b) => {
+      const dateA = new Date(updatedDates[assignments.indexOf(a)])
+      const dateB = new Date(updatedDates[assignments.indexOf(b)])
+      return sortByDate ? dateA - dateB : dateB - dateA
+   })
+
+   // Toggle the sorting order when the button is clicked
+   const handleSortByDate = () => {
+      setSortByDate((prevSortByDate) => !prevSortByDate)
+      console.log('SORT BY DATE CALLED')
+      console.log('SORT BY DATE ', sortByDate)
+      console.log('SORTED ASSIGNMENTS ', sortedAssignments)
+   }
+
    function tidyUp(assignment) {
       // console.log('TIDY ASSIGNMENT ', assignment._id)
       // console.log('TIDY QUIZID ', assignment.quizId)
       // console.log('TIDY PUPILID ', pupilId)
-      //
-      //
       console.log('TIDY ASSIGNMENT ', assignment)
       console.log('ASSIGNMENT LENGTH ', assignment?.length)
       console.log('ASSIGNMENT QUIZ ', assignment?.quiz ? true : false)
@@ -181,6 +194,7 @@ function Homework() {
    useEffect(() => {
       setAssignments([])
       getAllAssignments()
+      console.log('ASSIGNMENTS ', assignments)
    }, [pupilId])
 
    console.log(assignments)
@@ -193,9 +207,13 @@ function Homework() {
    if (activeKid && assignments) {
       return (
          <div>
-            <Greeting title='Home: Homework' />
+            <Greeting title='Homework' />
+
             <h2 className='greenFont'>{activeKid && activeKid.name}</h2>
             <div className='divider'></div>
+            <Button onClick={handleSortByDate}>
+               Sort by Date {sortByDate ? '(Asc)' : '(Desc)'}
+            </Button>
             {/* NO HOMEWORK STATE: {JSON.stringify(noHomework)}
             ASSIGNMENTS LENGTH: {JSON.stringify(assignments.length)} */}
             {assignments?.length == 0 && (
@@ -229,11 +247,20 @@ function Homework() {
                   onClose={() => setShowMathsQuiz(false)}
                />
             )}
-            <Row gutter={[14, 14]}>
+            {/* <Row gutter={[14, 14]}>
                {assignments.map((assignment) => (
                   <Col span={6}>
                      <div className='card2  flex flex-col gap-1 p-2'>
                         <div key={assignment._id}>{tidyUp(assignment)}</div>
+                     </div>
+                  </Col>
+               ))}
+            </Row> */}
+            <Row gutter={[14, 14]}>
+               {sortedAssignments.map((assignment) => (
+                  <Col span={6} key={assignment._id}>
+                     <div className='card2  flex flex-col gap-1 p-2'>
+                        {tidyUp(assignment)}
                      </div>
                   </Col>
                ))}

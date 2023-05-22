@@ -36,13 +36,13 @@ import PupilsDashboard from './pages/teacher/PupilsDashboard'
 import AddMathsQuiz from './pages/teacher/AddMathsQuiz'
 
 import MyProfile from './pages/teacher/MyProfile'
-import NavBar from './components/NavBar'
+// import NavBar from './components/NavBar'
 import UpdateMathsQuiz from './pages/teacher/UpdateMathsQuiz'
 import FindTeacher from './pages/pupil/FindTeacher'
-import PupilHomework from './pages/pupil/PupilHomework'
+// import PupilHomework from './pages/pupil/PupilHomework'
 import NotFound from './components/NotFound'
 import MyAssignments from './pages/teacher/MyAssignments'
-import SetAssignment from './pages/teacher/SetAssignment'
+// import SetAssignment from './pages/teacher/SetAssignment'
 import Homework from './pages/pupil/Homework'
 
 // style={{ backgroundImage: `url(${background})` }}

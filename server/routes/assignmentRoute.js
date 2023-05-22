@@ -10,6 +10,10 @@ const MultiResultModel = require('../models/multiResultModel')
 
 const authMiddleware = require('../middleware/authMiddleware')
 
+// @desc uses teacherId to scan all assignments set by teacher and retrieve results
+// @route POST /api/assignments/get-pupil-results-by-teacher-and-assignment-id
+// @access Private
+
 router.post(
    '/get-pupil-results-by-teacher-and-assignment-id',
    authMiddleware,
@@ -70,6 +74,10 @@ router.post(
    }
 )
 
+// @desc use userid to retrieve all quizzes and groups
+// @route POST /api/assignments/get-multis-maths-groups
+// @access Private
+
 router.post('/get-multis-maths-groups', authMiddleware, async (req, res) => {
    const { userId } = req.body
 
@@ -77,15 +85,6 @@ router.post('/get-multis-maths-groups', authMiddleware, async (req, res) => {
       const multis = await MultiQuizModel.find({ userId })
       const mathsQuizzes = await MathsQuizModel.find({ userId })
       const groupModels = await GroupModel.find({ userId })
-
-      // const groups = groupModels.map((group) => {
-      //    return {
-      //       _id: group._id,
-      //       name: group.name,
-      //       quizzes: group.quizzes,
-      //    }
-      // })
-
       res.send({
          multis,
          mathsQuizzes,
@@ -100,6 +99,10 @@ router.post('/get-multis-maths-groups', authMiddleware, async (req, res) => {
       })
    }
 })
+
+// @desc add new assignment
+// @route POST /api/assignments/add-assignment
+// @access Private
 
 router.post('/add-assignment', authMiddleware, async (req, res) => {
    const { quizType, groupId, teacherId, quizId, assignmentTitle } = req.body
@@ -126,6 +129,10 @@ router.post('/add-assignment', authMiddleware, async (req, res) => {
       })
    }
 })
+
+// @desc use userid to fetch all assignments
+// @route POST /api/assignments/get-assignments-by-teacher-id
+// @access Private
 
 router.post('/get-assignments-by-teacher-id', authMiddleware, async (req, res) => {
    console.log('req.body', req.body)
@@ -172,6 +179,10 @@ router.post('/get-assignments-by-teacher-id', authMiddleware, async (req, res) =
    }
 })
 
+// @desc use assignment id to delete assignment
+// @route POST /api/assignments/delete-assignment
+// @access Private
+
 router.post('/delete-assignment', authMiddleware, async (req, res) => {
    const { assignmentId } = req.body
 
@@ -189,6 +200,10 @@ router.post('/delete-assignment', authMiddleware, async (req, res) => {
       })
    }
 })
+
+// @desc use pupilId to fetch pupil's assignments
+// @route POST /api/assignments/get-assignments-by-pupil-id
+// @access Private
 
 router.post('/get-assignments-by-pupil-id', authMiddleware, async (req, res) => {
    console.log('get-assignments-by-pupil-id')
@@ -259,7 +274,9 @@ router.post('/get-assignments-by-pupil-id', authMiddleware, async (req, res) => 
    }
 })
 
-// use assignmentId to check if submitted in results based on maths or multi
+// @desc se assignmentId to check if submitted in results based on maths or multi
+// @route POST /api/assignments/get-assignment-status
+// @access Private
 
 router.post('/get-assignment-status', authMiddleware, async (req, res) => {
    const { assignmentId } = req.body
@@ -310,31 +327,21 @@ router.post('/get-assignment-status', authMiddleware, async (req, res) => {
    }
 })
 
-// use assignmentId to check if submitted in results based on maths or multi
+// @desc use assignmentId to check if submitted in results based on maths or multi
+// @route POST /api/assignments/get-assignment-status-for-all-pupils
+// @access Private
+
 router.post('/get-assignment-status-for-all-pupils', authMiddleware, async (req, res) => {
    const { assignmentId } = req.body
-   console.log('assignmentId', assignmentId)
 
    try {
       const assignment = await AssignmentModel.findById(assignmentId)
-      console.log('assignment', assignment)
       const { quizType, quizId, groupId } = assignment
-      console.log('ASSIGNMENT quizType', quizType)
-      console.log('ASSIGNMENT quizId', quizId)
-      console.log('ASSIGNMENT groupId', groupId)
-      console.log('ASSIGNMENT ID', assignmentId)
       const group = await GroupModel.findById({ _id: groupId })
-      // console.log('group', group)
-      // console.log('group', group)
       const groupMembers = group.groupMembers
-      // console.log('GROUP MEMBERS:    ', groupMembers)
-
-      console.log(' - - - - - - - - - - - - - - - - - - - ')
-
       const groupMembersData = await Promise.all(
          groupMembers.map(async (pupilId) => {
             // ********* IF MATHS RESULT ********
-
             if (quizType === 'maths') {
                const query = { assignmentId: assignmentId, pupilId: pupilId }
                const mathsResult = await MathsResultModel.findOne(query).populate(
@@ -365,18 +372,11 @@ router.post('/get-assignment-status-for-all-pupils', authMiddleware, async (req,
                const multiResult = await MultiResultModel.findOne(query).populate(
                   'pupilId'
                )
-               // console.log('~~~QUIZ ID', quizId)
-               // console.log('~~~PUPIL ID', pupilId)
-               // console.log('~~~~ MULTI RESULT', multiResult)
-               // console.log('~~~~~ ASSIGNMENT ID: ', assignmentId)
-
                if (multiResult) {
                   const date = multiResult.createdAt
                   const pupil = await PupilModel.findById(pupilId)
                   const pupilName = pupil.name // Extract the pupilName from the Pupil model
-
                   console.log('~~~~~ PUPIL NAME: ', pupilName)
-
                   return {
                      date,
                      pupilId,

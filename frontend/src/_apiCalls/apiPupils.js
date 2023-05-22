@@ -17,3 +17,21 @@ export const findTeacher = async (payload) => {
       return error.response.data
    }
 }
+
+export const deletePupil = async (payload) => {
+   try {
+      const response = await axiosInstance.post('/api/pupils/delete-pupil', payload)
+      return response.data
+   } catch (error) {
+      return error.response.data
+   }
+}
+
+export const updatePupil = async (payload) => {
+   try {
+      const response = await axiosInstance.post('/api/pupils/update-pupil', payload)
+      return response.data
+   } catch (error) {
+      return error.response.data
+   }
+}

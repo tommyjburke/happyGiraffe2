@@ -116,33 +116,6 @@ export default function TakeMultiQuiz({ quizId, onClose, assignmentId }) {
       }
    }
 
-   // function checkAnswer(userChose, correctAnswer) {
-   //    // console.log('FUNCTION userChose: ' + userChose + ' correctAnswer: ' + correctAnswer)
-   //    if (userChose == correctAnswer) {
-   //       setRight(right + 1)
-   //       // console.log('CORRECT!!!')
-   //       playCorrectSound()
-   //       // generateReward()
-   //       getReward()
-   //    } else {
-   //       setWrong(wrong + 1)
-   //       playWrongSound()
-   //    }
-   //    // setAnsweredQuestions(answeredQuestions + 1)
-   //    setAnsweredQuestions(answeredQuestions + 1)
-
-   //    let answeredNum = answeredQuestions
-   //    // console.log('answeredQuestions: ' + answeredNum)
-
-   //    if (answeredQuestions === numQuestions - 1) {
-   //       setShowCountdown(false)
-   //       displayResults()
-   //       // console.log('FINISHHHHHED')
-   //    } else {
-   //       setSelectedQuestionIndex(selectedQuestionIndex + 1)
-   //    }
-   // }
-
    function checkAnswer(userChose, correctAnswer) {
       if (userChose === correctAnswer) {
          setRight(right + 1)
@@ -250,6 +223,11 @@ export default function TakeMultiQuiz({ quizId, onClose, assignmentId }) {
          }
 
          setResult(tempResult)
+
+         if (!activeKid) {
+            message.info('YOU MUST BE A PUPIL IF U WANNA SAVE RESULTS!')
+            return
+         }
 
          dispatch(ShowLoading())
 
@@ -368,19 +346,20 @@ export default function TakeMultiQuiz({ quizId, onClose, assignmentId }) {
                      currentUser={currentUser}
                   />
                )}
-
+               <Rewards rewards={rewards} ref={rewardsRef} />
+               {showScoreboard && (
+                  <>
+                     <ScoreBoard
+                        currentPercentage={currentPercentage}
+                        right={right}
+                        wrong={wrong}
+                        finalScore={finalScore}
+                     />
+                  </>
+               )}
                {showQuiz && (
                   <>
-                     <Rewards rewards={rewards} ref={rewardsRef} />
-                     {showScoreboard && (
-                        <>
-                           <ScoreBoard
-                              currentPercentage={currentPercentage}
-                              right={right}
-                              wrong={wrong}
-                           />
-                        </>
-                     )}{' '}
+                     {' '}
                      {showCountdown && (
                         <>
                            <CountdownTimer

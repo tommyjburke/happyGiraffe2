@@ -8,12 +8,17 @@ import { addMathsQuiz } from '../../_apiCalls/apiMaths'
 import { useNavigate, useParams } from 'react-router-dom'
 import { HideLoading, ShowLoading } from '../../redux/loaderSlice'
 import { useDispatch, useSelector } from 'react-redux'
+import Notes from '../pupil/Notes'
+import ScoreBoard from '../pupil/ScoreBoard'
+import { useRef } from 'react'
 
 // import { generateReward } from './Rewards'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css' // import the styles
 
 import useSound from 'use-sound'
+import Rewards from '../pupil/Rewards'
+import DisplayResults from '../pupil/DisplayResults'
 
 export default function BuildBoard({
    setShowBuildBoardModal,
@@ -77,35 +82,58 @@ export default function BuildBoard({
          }
 
          const spanValues = []
-         // for (let j = 0; j < 3; j++) {
-         //    spanValues.push(Math.floor(Math.random() * 4))
-         // }
          let a = Math.floor(
             Math.random() * (gameOptions.aValue[1] - gameOptions.aValue[0] + 1) +
                gameOptions.aValue[0]
          )
-         spanValues.push(a)
+
          let b = Math.floor(
             Math.random() * (gameOptions.bValue[1] - gameOptions.bValue[0] + 1) +
                gameOptions.bValue[0]
          )
 
-         spanValues.push(b)
          const randomOpIndex = Math.floor(Math.random() * operators.length)
 
          const randomOpInt = operators[randomOpIndex]
 
          let opt = opts[randomOpInt]
 
+         if (opt == '-' && a < b) {
+            console.log('opt: ', opt)
+            console.log('a is less than b')
+            console.log('a: ', a)
+            console.log('b: ', b)
+            let temp = a
+            a = b
+            b = temp
+            console.log('a: ', a)
+            console.log('b: ', b)
+         }
+
+         if (opt == '/' && a < b != 0) {
+            console.log('opt: ', opt)
+            console.log('a is not divisible by b')
+            console.log('a: ', a)
+            console.log('b: ', b)
+            let temp = a
+            a = b
+            b = temp
+            console.log('a: ', a)
+            console.log('b: ', b)
+            hiddenPosition = 2
+         }
+
+         spanValues.push(parseInt(a))
+         spanValues.push(parseInt(b))
+
+         // let c = Math.floor(eval(`${a} ${opt} ${b}`))
          let c = Math.floor(eval(`${a} ${opt} ${b}`))
-         spanValues.push(c)
+         spanValues.push(parseInt(c))
          spanValues.push(opt)
-         spanValues.push(hiddenPosition)
+         spanValues.push(parseInt(hiddenPosition))
          let correctAnswer = spanValues[hiddenPosition]
-         spanValues.push(correctAnswer)
-
+         spanValues.push(parseInt(correctAnswer))
          newDivsData.push({ spanValues, inputValue: '' })
-
          console.log('SpanValues: ', spanValues)
       }
 
@@ -172,7 +200,7 @@ export default function BuildBoard({
          let userInput = (
             <input
                disabled={divData.inputDisabled}
-               className='boxAnswer'
+               className='boxInput'
                type='number'
                value={divData.inputValue}
                onChange={(event) => handleInputChange(event, index)}
@@ -198,12 +226,6 @@ export default function BuildBoard({
                <span className='indexNum'>{index + 1}</span>
                <span className=''>
                   {x} {operator} {y} = {z}
-                  {/* <input
-                     className='boxAnswer'
-                     type='number'
-                     value={divData.inputValue}
-                     onChange={(event) => handleInputChange(event, index)}
-                  /> */}
                </span>
                <button
                   className={divData.buttonClass || 'checkBtn !important'}
@@ -217,15 +239,6 @@ export default function BuildBoard({
          )
       })
    }
-
-   {
-      /* // <div key={index} className='question'>
-   //    {divData.spanValues.map((spanValue, index) => ( */
-   }
-   //       <>
-   //          {/* <span key={0}>{spanValue[1]}</span> */}
-
-   // ))
 
    useEffect(() => {
       generateDivs()
@@ -270,14 +283,6 @@ export default function BuildBoard({
          content: (
             <div>
                <p>{message}</p>
-               {/* <p>
-                  <button
-                     className='btn btn-primary'
-                     onClick={() => setShowBuildBoardModal(true)}
-                  >
-                     Close
-                  </button>
-               </p> */}
             </div>
          ),
       })
@@ -298,44 +303,22 @@ export default function BuildBoard({
          onCancel={() => setShowBuildBoardModal(false)}
          width={700}
       >
-         {/* <RandomGif />
-         <img src={one} alt='one' /> */}
          <h2 style={{ fontFamily: 'schoolbell' }}>
             <u>{title}</u>
          </h2>
 
          {showNotes && (
-            <div className='notes1'>
-               No. of Questions: <span className='notes2'>{numQuestions}</span> <br />
-               Math skills: <span className='notes2'>[{formattedOps.join(' , ')}]</span>
-               {useCountdown && (
-                  <>
-                     <br />
-                     Timer: <span className='notes2'>{countdownSeconds} seconds </span>
-                  </>
-               )}
-               <br />
-               {notes.length > 0 && (
-                  <>
-                     <u>Notes:</u>
-                     <div
-                        className='borderedNotes notes2'
-                        dangerouslySetInnerHTML={{ __html: notes }}
-                     />
-                  </>
-               )}
-               <div className='rightButtonContainer'>
-                  <button
-                     onClick={() => {
-                        setShowNotes(false)
-                        setShowQuiz(true)
-                     }}
-                     className='start flash2'
-                  >
-                     GO!
-                  </button>
-               </div>
-            </div>
+            <Notes
+               title={title}
+               notes={notes}
+               setShowNotes={setShowNotes}
+               setShowQuiz={setShowQuiz}
+               numQuestions={numQuestions}
+               useCountdown={useCountdown}
+               countdownSeconds={countdownSeconds}
+               // currentUser={currentUser}
+               formattedOps={formattedOps}
+            />
          )}
          {showQuiz && (
             <>
@@ -350,8 +333,18 @@ export default function BuildBoard({
                      />
                   ))}
                </div>
+               {/* <Rewards rewards={rewards} ref={rewardsRef} /> */}
 
                {showScoreboard && (
+                  // <>
+                  //    <ScoreBoard
+                  //       currentPercentage={currentPercentage}
+                  //       right={right}
+                  //       wrong={wrong}
+                  //       finalScore={finalScore}
+                  //    />
+                  // </>
+
                   <div>
                      ✅ <span className='scoreGreen'>{right}</span> :{' '}
                      <span className='scoreRed'>{wrong}</span>❌
@@ -361,13 +354,6 @@ export default function BuildBoard({
                <div className='rightButtonContainer'>
                   <button
                      onClick={() => {
-                        // console.log(
-                        //    'ON SAVE RENDER: ',
-                        //    title,
-                        //    notes,
-                        //    numQuestions,
-                        //    countdownSeconds
-                        // )
                         onSave()
                      }}
                   >
@@ -379,10 +365,6 @@ export default function BuildBoard({
                )}
             </>
          )}
-
-         {/* <div>
-            <button onClick={generateImage}>Generate Image</button>
-         </div> */}
       </Modal>
    )
 }

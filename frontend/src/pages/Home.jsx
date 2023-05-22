@@ -1,4 +1,4 @@
-import { Col, message, Row } from 'antd'
+import { Col, message, Row, Space } from 'antd'
 import { useEffect, useState } from 'react'
 
 import { getAllMultis } from '../_apiCalls/apiMultis'
@@ -22,7 +22,7 @@ export default function Home() {
    const navigate = useNavigate()
    const dispatch = useDispatch()
 
-   const opts = ['*', '/', '+', '-']
+   const opts = ['x', '/', '+', '-']
    const [selectedMathsQuizId, setSelectedMathsQuizId] = useState(null)
    const [showMathsQuiz, setShowMathsQuiz] = useState(false)
 
@@ -201,6 +201,26 @@ export default function Home() {
             Use the navigation to sign in, <br />
             or create a quiz that cannot be saved <br />
             nor shared with other users.
+            <div className='container'>
+               <Space wrap>
+                  <button
+                     type='default'
+                     // style={{ background: 'red !important', borderColor: 'yellow' }}
+                     onClick={() => navigate('/teacher/add-maths')}
+                     className='yellowRedButton'
+                  >
+                     + CREATE MATHS QUIZ
+                  </button>
+                  <br />
+
+                  <button
+                     className='yellowBlueButton'
+                     onClick={() => navigate('/teacher/add-multi')}
+                  >
+                     + CREATE MULTIPLE CHOICE
+                  </button>
+               </Space>
+            </div>
          </div>
       )
    }

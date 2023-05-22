@@ -37,6 +37,16 @@ function Notes({
                <br />
             </>
          )}
+         {formattedOps && formattedOps.includes('/') && (
+            <>
+               <span className='greenFont'>
+                  <u>Division</u> answers will be rounded to whole numbers.
+                  <br />
+                  Example: 8 / 3 = 2.
+               </span>
+               <br />
+            </>
+         )}
          {!useCountdown && (
             <>
                Timer: <span className='notes2'> No </span>

@@ -38,6 +38,7 @@ module.exports = (req, res, next) => {
       const decodedToken = jwt.verify(token, process.env.JWT_SECRET)
       // console.log('**** MIDDLEWARE DECODED TOKEN: ***** ', decodedToken)
       req.body.userId = decodedToken.userId
+      // req.auth.userId = decodedToken.userId
       // console.log('**** MIDDLEWARE USERID: ***** ' + req.body.userId)
       // console.log('*** MIDDLEWARE END ***')
       next()

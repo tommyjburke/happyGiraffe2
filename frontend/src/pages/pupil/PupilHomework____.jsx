@@ -17,24 +17,19 @@ export default function PupilHomework() {
    const [multis, setMultis] = useState([])
    const navigate = useNavigate()
    const dispatch = useDispatch()
-
-   const opts = ['*', '/', '+', '-']
    const [selectedMathsQuizId, setSelectedMathsQuizId] = useState(null)
    const [showMathsQuiz, setShowMathsQuiz] = useState(false)
+   const opts = ['*', '/', '+', '-']
 
-   //
    const userState = useSelector((state) => state.users)
 
    console.log('userState', userState) // log the user state to the console
-   //
    console.log('user', user)
 
    const handleStartMathsQuiz = (quizId) => {
       setSelectedMathsQuizId(quizId)
       setShowMathsQuiz(true)
    }
-   //
-   //
 
    // retrieve multiple choice quizzes
    const getMultis = async () => {
@@ -79,9 +74,9 @@ export default function PupilHomework() {
       return (
          user && (
             <div>
+               Poo
                {activeKid && activeKid.name}
-               <Greeting title='Home: Homework' />
-
+               <Greeting title='Home: Homework ______' />
                <div className='divider'></div>
                <Row gutter={[8, 8]}>
                   {multis.map((multi) => (

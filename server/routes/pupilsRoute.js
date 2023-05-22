@@ -63,4 +63,73 @@ router.post('/add-pupil', authMiddleware, async (req, res) => {
    }
 })
 
+router.post('/delete-pupil', authMiddleware, async (req, res) => {
+   const { userId } = req.body
+   const { pupilId } = req.body.pupilId
+
+   console.log('userId', userId)
+   console.log('pupilId', pupilId)
+
+   const session = await mongoose.startSession()
+   session.startTransaction()
+   try {
+      const pupil = await PupilModel.findByIdAndDelete(pupilId).session(session)
+
+      if (!pupil) {
+         return res.status(404).send({ message: 'Pupil not found', success: false })
+      }
+
+      const mainUserId = userId.toString()
+      const mainUserFile = await UserModel.findById(mainUserId).session(session)
+
+      if (!mainUserFile) {
+         return res.status(404).send({ message: 'User not found', success: false })
+      }
+
+      const pupilIndex = mainUserFile.pupils.indexOf(pupilId)
+      const connectionIndex = mainUserFile.connections.indexOf(pupilId)
+
+      if (pupilIndex !== -1) {
+         mainUserFile.pupils.splice(pupilIndex, 1)
+      }
+
+      if (connectionIndex !== -1) {
+         mainUserFile.connections.splice(connectionIndex, 1)
+      }
+
+      await mainUserFile.save({ session })
+      await session.commitTransaction()
+      session.endSession()
+
+      res.send({
+         message: 'Pupil deleted successfully',
+         success: true,
+      })
+   } catch (error) {
+      await session.abortTransaction()
+      session.endSession()
+      res.status(500).send({
+         message: 'Caught Server Error: ' + error.message,
+         data: error,
+         success: false,
+      })
+   }
+})
+
+router.post('/update-pupil', authMiddleware, async (req, res) => {
+   try {
+      await PupilModel.findByIdAndUpdate(req.body.pupilId, req.body)
+      res.send({
+         message: 'Pupil updated good good',
+         success: true,
+      })
+   } catch (error) {
+      res.status(500).send({
+         message: error.message,
+         data: error,
+         success: false,
+      })
+   }
+})
+
 module.exports = router

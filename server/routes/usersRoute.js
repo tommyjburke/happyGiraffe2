@@ -1,12 +1,17 @@
 const router = require('express').Router()
 const UserModel = require('../models/userModel')
+const EmailVerificationModel = require('../models/emailVerificationModel')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const authMiddleware = require('../middleware/authMiddleware')
 const bodyParser = require('body-parser')
-
-const PupilModel = require('../models/pupilModel')
 const ConnectionModel = require('../models/connectionModel')
+const PupilModel = require('../models/pupilModel')
+const nodemailer = require('nodemailer')
+// const { google } = require('googleapis')
+// const OAuth2 = google.auth.OAuth2
+// const { OAuth2Client } = require('google-auth-library')
+// const { CLIENT_ID, CLIENT_SECRET, REFRESH_TOKEN, REDIRECT_URI } = process.env
 
 // user registration ENDPOINT
 
@@ -28,6 +33,16 @@ router.post('/register', async (req, res) => {
       // create new user in db
       const newUser = new User(req.body)
       await newUser.save()
+
+      // var transport = nodemailer.createTransport({
+      //    host: 'sandbox.smtp.mailtrap.io',
+      //    port: 2525,
+      //    auth: {
+      //       user: '27207bbeabd083',
+      //       pass: '62227a8cd90a4f',
+      //    },
+      // })
+
       res.send({
          message: 'User created good good',
          success: true,
@@ -279,6 +294,40 @@ router.post('/get-all-users', async (req, res) => {
       })
       res.send({
          // message: 'Users retrieved good good',
+         success: true,
+         data: usersData,
+      })
+   } catch (error) {
+      res.status(500).send({
+         message: error.message,
+         data: error,
+         success: false,
+      })
+   }
+})
+
+router.post('/get-all-users-for-admin', async (req, res) => {
+   try {
+      const users = await UserModel.find().populate('pupils') // Populate the 'pupils' field with data from the 'PupilModel'
+      const usersData = users.map((user) => {
+         return {
+            userId: user._id,
+            name: user.name,
+            email: user.email,
+            role: user.role,
+            pupils: user.pupils.map((pupil) => {
+               // Map over the 'pupils' array and extract the desired fields
+               return {
+                  pupilId: pupil._id,
+                  username: pupil.username,
+                  name: pupil.name,
+                  // Add other desired pupil fields
+               }
+            }),
+         }
+      })
+
+      res.send({
          success: true,
          data: usersData,
       })

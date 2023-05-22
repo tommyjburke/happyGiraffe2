@@ -12,9 +12,6 @@ const store = configureStore({
       loader: loaderSlice,
       kids: kidsSlice,
       activeKid: activeKidSlice,
-      // activeKid: kidsSlice,
-      // reduxPupils: pupilsSlice,
-      // activeProfile: activeProfileSlice,
    },
 })
 

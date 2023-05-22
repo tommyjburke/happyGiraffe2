@@ -1,14 +1,6 @@
-import {
-   TableContainer,
-   Table,
-   TableHead,
-   TableRow,
-   TableCell,
-   TableBody,
-   Modal,
-   Box,
-   Button,
-} from '@mui/material'
+import { Modal, Box } from '@mui/material'
+
+import { Table, Button } from 'antd'
 
 import { getUserConnections } from '../../_apiCalls/apiUsers'
 import { useEffect, useState } from 'react'
@@ -27,8 +19,8 @@ const contactsColumns = [
    },
    {
       title: 'Full Name',
-      dataIndex: 'fullName',
-      key: 'fullName',
+      dataIndex: 'name',
+      key: 'name',
    },
    {
       title: 'School',
@@ -39,6 +31,15 @@ const contactsColumns = [
       title: 'Class',
       dataIndex: 'className',
       key: 'className',
+   },
+   {
+      title: '',
+      key: 'action',
+      render: (text, record) => (
+         <Button type='primary' danger>
+            Delete
+         </Button>
+      ),
    },
 ]
 
@@ -99,7 +100,9 @@ export default function MyPupils() {
             </Box>
          </Modal>
 
+         {JSON.stringify(contacts)}
          <h1>My Pupils/Contacts</h1>
+         <Table columns={contactsColumns} dataSource={contacts} />
 
          {/* <ul>
             {contacts.map((contact) => (
@@ -108,7 +111,7 @@ export default function MyPupils() {
                </li>
             ))}
          </ul> */}
-         <TableContainer>
+         {/* <TableContainer>
             <Table>
                <TableHead>
                   <TableRow>
@@ -129,7 +132,7 @@ export default function MyPupils() {
                   ))}
                </TableBody>
             </Table>
-         </TableContainer>
+         </TableContainer> */}
       </div>
    )
 }

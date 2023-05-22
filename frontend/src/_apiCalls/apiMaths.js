@@ -61,71 +61,14 @@ export const deleteMathsById = async (payload) => {
    }
 }
 
-// // edit multi by id
-
-// export const editMultiById = async (payload) => {
-//    try {
-//       const response = await axiosInstance.post('/api/multis/edit-multi-by-id', payload)
-//       return response.data
-//    } catch (error) {
-//       return error.response.data
-//    }
-// }
-
-// // delete multi by id
-
-// export const deleteMultiById = async (payload) => {
-//    try {
-//       const response = await axiosInstance.post('/api/multis/delete-multi-by-id', payload)
-//       return response.data
-//    } catch (error) {
-//       return error.response.data
-//    }
-// }
-
-// // add question to multi
-
-// export const addQuestionToMulti = async (payload) => {
-//    try {
-//       const response = await axiosInstance.post(
-//          '/api/multis/add-question-to-multi',
-//          payload
-//       )
-//       return response.data
-//    } catch (error) {
-//       return error.response.data
-//    }
-// }
-
-// export const editQuestionById = async (payload) => {
-//    try {
-//       const response = await axiosInstance.post('/api/multis/edit-question-by-id', payload)
-//       return response.data
-//    } catch (error) {
-//       return error.response.data
-//    }
-// }
-
-// export const deleteQuestionById = async (payload) => {
-//    try {
-//       const response = await axiosInstance.post(
-//          '/api/multis/delete-question-in-multi',
-//          payload
-//       )
-//       return response.data
-//    } catch (error) {
-//       return error.response.data
-//    }
-// }
-
-// export const getQuestionById = async (payload) => {
-//    try {
-//       const response = await axiosInstance.post(
-//          '/api/multis/get-question-in-multi',
-//          payload
-//       )
-//       return response.data
-//    } catch (error) {
-//       return error.response.data
-//    }
-// }
+export const updateMathsById = async (payload) => {
+   try {
+      const response = await axiosInstance.post(
+         '/api/maths-quiz/update-maths-by-id',
+         payload
+      )
+      return response.data
+   } catch (error) {
+      return error.response.data
+   }
+}

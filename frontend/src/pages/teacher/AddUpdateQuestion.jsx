@@ -40,7 +40,7 @@ export default function AddUpdateQuestion({
          !values.C ||
          !values.D
       ) {
-         message.error('Please fill all the fields')
+         message.error('Please complete all  fields')
          return
       }
 
@@ -71,10 +71,6 @@ export default function AddUpdateQuestion({
          if (response.success) {
             message.success(response.message)
             refreshData()
-            // setShowQuestionModal(false)
-            // resetForm()
-            // form.resetFields() // reset form fields
-            // resetForm()
             onReset()
          } else {
             message.error(response.message)
@@ -104,6 +100,7 @@ export default function AddUpdateQuestion({
             setSelectedQuestion(null)
          }}
       >
+         {multiId && <div className='container'>{multiId}</div>}
          <Form
             className='modalStyle2'
             form={form}
@@ -134,13 +131,6 @@ export default function AddUpdateQuestion({
                </Form.Item>
             </div>
 
-            {/* <Form.Item
-               name='correctOption'
-               label='Correct Option'
-            >
-               <Input type='text' />
-            </Form.Item> */}
-
             <div className='flex gap-1'>
                <Form.Item name='A' label='Answer A'>
                   <Input type='text' />
@@ -159,15 +149,6 @@ export default function AddUpdateQuestion({
             </div>
 
             <div className='flex justify-end mt-1 gap-1'>
-               {/* <button
-                  className='brownButton2'
-                  type='button'
-                  onClick={() =>
-                     setShowQuestionModal(false)
-                  }
-               >
-                  Cancel
-               </button> */}
                <button
                   onClick={() => {
                      setShowQuestionModal(false)
@@ -176,15 +157,7 @@ export default function AddUpdateQuestion({
                >
                   Exit{' '}
                </button>
-               {/* <button
-                  onClick={() => {
-                     onSubmit()
-                     setShowQuestionModal(false)
-                  }}
-                  className='brown-button'
-               >
-                  Finish
-               </button> */}
+
                <button
                   onClick={() => {
                      onSubmit()

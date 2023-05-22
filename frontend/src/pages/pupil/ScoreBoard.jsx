@@ -1,7 +1,7 @@
 import React from 'react'
 import { Progress, Space } from 'antd'
 
-export default function ScoreBoard({ currentPercentage, right, wrong }) {
+export default function ScoreBoard({ currentPercentage, right, wrong, finalScore }) {
    return (
       <>
          <div
@@ -18,7 +18,7 @@ export default function ScoreBoard({ currentPercentage, right, wrong }) {
          <div>
             <Progress
                // type='circle'
-               percent={currentPercentage}
+               percent={finalScore}
                // size={75}
                width={75}
                height={75}

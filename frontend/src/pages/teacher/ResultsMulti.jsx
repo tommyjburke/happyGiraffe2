@@ -108,13 +108,11 @@ export default function ResultsMulti() {
       text: title,
       value: title,
    }))
-   console.log('TITLE OPTIONS', titleOptions)
 
    const pupilNames = multiResultsData.map((name) => name.pupilName)
    const uniquePupilNames = pupilNames.filter(
       (name, index) => pupilNames.indexOf(name) === index
    )
-
    const pupilOptions = uniquePupilNames.map((title) => ({
       text: title,
       value: title,
@@ -211,7 +209,7 @@ export default function ResultsMulti() {
             MULTIPLE CHOICE RESULTS
          </h1>
          <br />
-         <Button onClick={setScoreSort}>Sort score</Button>
+         {/* <Button onClick={setScoreSort}>Sort score</Button> */}
 
          <Table
             rowKey={(record) => record._id}
@@ -278,176 +276,6 @@ export default function ResultsMulti() {
                },
             }}
          ></Table>
-
-         <div key={multiResultsData._id}>
-            <div className='flex gap-2'>
-               <div className='text-md'>Filters</div>
-               <input
-                  className='filterInput'
-                  style={{ color: 'white' }}
-                  type='text'
-                  placeholder='Quiz Title Filter'
-                  value={filters.multiName}
-                  onChange={(e) =>
-                     setFilters({
-                        ...filters,
-                        multiName: e.target.value.toLowerCase(),
-                     })
-                  }
-               />
-               <input
-                  className='filterInput !important'
-                  style={{ color: 'white' }}
-                  type='text'
-                  placeholder='Pupil Name Filter'
-                  value={filters.userName}
-                  onChange={(e) =>
-                     setFilters({
-                        ...filters,
-                        userName: e.target.value.toLowerCase(),
-                     })
-                  }
-               />
-               <input
-                  className='filterInput'
-                  style={{ color: 'white' }}
-                  type='text'
-                  placeholder='Class Filter'
-               />
-               <input
-                  className='filterInput'
-                  style={{ color: 'white' }}
-                  type='text'
-                  placeholder='Date Filter'
-               />
-               <i
-                  onClick={() => {
-                     setFilters({
-                        multiName: '',
-                        userName: '',
-                        className: '',
-                        date: '',
-                     })
-                  }}
-                  className='fas fa-times-circle'
-                  style={{ color: 'red', cursor: 'pointer' }}
-               ></i>
-            </div>
-            <div className='flex gap-2'>
-               <div className='text-md'>Sort</div>
-               <select
-                  className='filterInput'
-                  style={{ color: 'white' }}
-                  value={sortConfig.key}
-                  onChange={(e) => {
-                     setSortConfig({
-                        key: e.target.value,
-                        direction: 'ascending',
-                     })
-                  }}
-               >
-                  <option value=''>Sort By</option>
-                  <option value='multiName'>Quiz Title</option>
-                  <option value='userName'>Pupil Name</option>
-                  <option value='className'>Class</option>
-                  <option value='date'>Date</option>
-               </select>
-               <select
-                  className='filterInput'
-                  style={{ color: 'white' }}
-                  value={sortConfig.direction}
-                  onChange={(e) => {
-                     setSortConfig({
-                        ...sortConfig,
-                        direction: e.target.value,
-                     })
-                  }}
-               >
-                  <option value='ascending'>Ascending</option>
-                  <option value='descending'>Descending</option>
-               </select>
-               <i
-                  onClick={() => {
-                     setSortConfig({ key: '', direction: '' })
-                  }}
-                  className='fas fa-times-circle'
-                  style={{ color: 'red', cursor: 'pointer' }}
-               ></i>
-            </div>
-         </div>
-
-         <div className='bordered'>
-            {/* <div className='text-md'>Filters</div> */}
-            <div className='flex gap-2'>
-               {/* <input
-                  className='filterInput'
-                  style={{ color: 'white' }}
-                  type='text'
-                  placeholder='Quiz Title Filter'
-                  value={filters.multiName}
-                  onChange={(e) =>
-                     setFilters({ ...filters, multiName: e.target.value.toLowerCase() })
-                  }
-               />
-
-               <input
-                  className='filterInput !important'
-                  style={{ color: 'white' }}
-                  type='text'
-                  placeholder='Pupil Name Filter'
-                  value={filters.userName}
-                  onChange={(e) =>
-                     setFilters({ ...filters, userName: e.target.value.toLowerCase() })
-                  }
-               /> */}
-
-               <input
-                  className='filterInput'
-                  style={{ color: 'white' }}
-                  type='text'
-                  placeholder='Class Filter'
-               />
-
-               <i
-                  // onClick={() => {
-                  //    setFilters({
-                  //       multiName: '',
-                  //       userName: '',
-                  //    })
-                  //    getMultiData({
-                  //       multiName: '',
-                  //       userName: '',
-                  //    })
-                  // }}
-                  className='ri-close-circle-fill clearIcon'
-               ></i>
-            </div>
-         </div>
-         {/* <Table
-            columns={columns}
-            dataSource={multiResultsData.filter((report) => {
-               const multiName = report.multi.name.toLowerCase()
-               const userName = report.user.name.toLowerCase()
-               return (
-                  multiName.includes(filters.multiName) &&
-                  userName.includes(filters.userName)
-               )
-            })}
-            className='mt-1'
-         /> */}
-         {/* {JSON.stringify(multiResultsData)}
-         {showResultsModal && (
-            <ResultsModal
-               visible={showResultsModal}
-               onClose={handleModalClose}
-               fullReport={selectedReport}
-            />
-         )} */}
-
-         {/* {JSON.stringify(multiResultsData)} */}
-
-         {/* {multisResultData.assignmentTitle.map((title) => (
-                     <div>{title.assignmentTitle} */}
       </div>
    )
 }

@@ -4,29 +4,14 @@ import { useRef } from 'react'
 import { getUserInfo, getUserPupils } from '../_apiCalls/apiUsers'
 import { useDispatch, useSelector } from 'react-redux'
 import { setUser } from '../redux/usersSlice.js'
-// import { setActiveProfile } from '../redux/activeProfileSlice'
-// import { setPupils, setActivePupil } from '../redux/pupilsSlice.js'
+
 import { setKids } from '../redux/kidsSlice.js'
 import { setActiveKid } from '../redux/activeKidSlice.js'
 import { useNavigate } from 'react-router-dom'
 import logo from '../_media/logo.png'
 import { HideLoading, ShowLoading } from '../redux/loaderSlice'
 import { DownOutlined, UserOutlined, StopTwoTone } from '@ant-design/icons'
-import {
-   Menu,
-   Form,
-   InputNumber,
-   Popconfirm,
-   Table,
-   Typography,
-   Checkbox,
-   Button,
-   message,
-   Space,
-   Input,
-   Dropdown,
-   Tooltip,
-} from 'antd'
+import { Menu, Button, message, Space, Input, Dropdown } from 'antd'
 
 const { Search } = Input
 
@@ -43,13 +28,9 @@ export default function ProtectedRoute({ children }) {
    let mainUser = user?.name
    const { kids } = useSelector((state) => state.kids)
    const { activeKid } = useSelector((state) => state.activeKid)
-
    const [menu, setMenu] = useState([])
    const dispatch = useDispatch()
    const navigate = useNavigate()
-   // const [collapsed, setCollapsed] = useState(false)
-
-   // console.log(user?.role)
 
    const basicMenu = [
       {
@@ -77,35 +58,18 @@ export default function ProtectedRoute({ children }) {
          index: 1,
          title: 'My Homework',
          paths: ['/pupil/homework'],
-         // paths: ['/'],
-         // icon: <i className='ri-home-4-line'></i>,
          onClick: () => navigate('/pupil/homework'),
       },
-      // {
-      //    title: 'Search User',
-      //    paths: ['/search'],
-      //    icon: <i className='ri-search-line'></i>,
-      //    onClick: () => navigate('/search'),
-      // },
-      // {
-      //    index: 2,
-      //    title: 'My Quizzes',
-      //    paths: ['/teacher/quiz', '/teacher/quiz/add'],
-      //    // icon: <i class='ri-dashboard-line'></i>,
-      //    onClick: () => navigate('/teacher/quiz'),
-      // },
       {
          index: 3,
          title: 'My Results',
          paths: ['/pupil/myresults'],
-         // icon: <i className='ri-bar-chart-line'></i>,
          onClick: () => navigate('/pupil/myresults'),
       },
       {
          index: 4,
          title: 'Find Teacher',
          paths: ['/pupil/find-teacher'],
-         // icon: <i className='ri-graduation-cap-line'></i>,
          onClick: () => navigate('/pupil/find-teacher'),
       },
 
@@ -113,7 +77,6 @@ export default function ProtectedRoute({ children }) {
          index: 5,
          title: 'Logout',
          paths: ['/logout'],
-         // icon: <i className='ri-logout-box-line'></i>,
          onClick: () => {
             localStorage.removeItem('token')
             localStorage.removeItem('activeKid')
@@ -138,38 +101,32 @@ export default function ProtectedRoute({ children }) {
       {
          title: 'Assignments',
          paths: ['/teacher/assignments'],
-         // icon: <i class='ri-dashboard-line'></i>,
          onClick: () => navigate('/teacher/assignments'),
       },
       {
          title: 'Quizzes',
          paths: ['/teacher/quiz', '/teacher/quiz/add'],
-         // icon: <i class='ri-dashboard-line'></i>,
          onClick: () => navigate('/teacher/quiz'),
       },
 
       {
          title: 'Results',
          paths: ['/teacher/results'],
-         // icon: <i className='ri-bar-chart-line'></i>,
          onClick: () => navigate('/teacher/results'),
       },
       {
          title: 'Kids/Pupils',
          paths: ['/teacher/pupils-dashboard'],
-         // icon: <i className='ri-graduation-cap-line'></i>,
          onClick: () => navigate('/teacher/pupils-dashboard'),
       },
       {
          title: 'Profile',
          paths: ['/teacher/profile'],
-         // icon: <i className='ri-user-line'></i>,
          onClick: () => navigate('/teacher/profile'),
       },
       {
          title: 'Logout',
          paths: ['/logout'],
-         // icon: <i className='ri-logout-box-line'></i>,
          onClick: () => {
             localStorage.removeItem('token')
             localStorage.removeItem('activeKid')
@@ -205,7 +162,7 @@ export default function ProtectedRoute({ children }) {
          if (response.success) {
             message.success('Logged In', [0.9])
 
-            // use redux to set user in state
+            // use redux to set user in redux state
             dispatch(setUser(response.data))
             setUserData(response.data)
             // console.log(response.data)
@@ -318,14 +275,6 @@ export default function ProtectedRoute({ children }) {
       icon: <UserOutlined />,
    }))
 
-   // items.push({
-   //    label: <b>EXIT CHILD MODE</b>,
-   //    key: '1',
-   //    icon: <StopTwoTone />,
-   //    onClick: linkToButton,
-   // })
-   // console.log('ITEMS___2', items)
-
    const menuProps = {
       items,
       onClick: selectKidClick,
@@ -422,7 +371,7 @@ export default function ProtectedRoute({ children }) {
                         onClick={item.onClick}
                      >
                         {item.icon}
-                        <span>{item.title}</span>
+                        <>{item.title}</>
                      </Menu.Item>
                   </Space>
                )

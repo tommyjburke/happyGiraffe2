@@ -31,6 +31,10 @@ export default function AddMathsQuiz() {
    const [checkboxes, setCheckboxes] = useState([0, 2, 3])
 
    const [content, setContent] = useState('')
+   const rewardsRef = useRef(null)
+   function getReward() {
+      rewardsRef.current.generateReward()
+   }
 
    const options = {
       modules: {
@@ -197,14 +201,23 @@ export default function AddMathsQuiz() {
 
                         <label className='myCheckBoxes'>
                            <Checkbox
-                              disabled={true}
+                              // disabled={true}
                               type='checkbox'
                               value='1'
                               checked={checkboxes.includes(1)}
                               onChange={handleCheckboxChange}
                               defaultChecked={false}
                            />{' '}
-                           [/] Division [BETA]
+                           [/] Division{' '}
+                           <span
+                              className='greenFont'
+                              style={{
+                                 fontSize: '0.6em !important',
+                                 fontFamily: 'Schoolbell',
+                              }}
+                           >
+                              [Whole Numbers]
+                           </span>
                         </label>
 
                         <label className='myCheckBoxes'>
@@ -320,20 +333,6 @@ export default function AddMathsQuiz() {
                      />{' '}
                      seconds
                   </div>
-                  {/* <div className='optionsBordered'>
-                     (Optional) Notes for pupil:
-                     <br />
-                     <TextareaAutosize
-                        aria-label='empty textarea'
-                        style={{ width: '95%' }}
-                        className='notes'
-                        placeholder='Write any instructions for pupil(s) here.....'
-                        value={notes}
-                        onKeyDown={handleKeyDown}
-                        id='notes'
-                        onChange={(e) => setNotes(e.target.value)}
-                     />
-                  </div> */}
 
                   <div className='optionsBordered'>
                      (Optional) Notes for pupil:
@@ -349,8 +348,6 @@ export default function AddMathsQuiz() {
                      </div>
                   </div>
                </div>
-
-               {/* <img src='https://happygiraffe.co.uk/mygifs/26.gif' alt='mario' /> */}
                <div className='startButton'>
                   <button onClick={buildMathsBoard} className='myBtn'>
                      Build Maths Game
