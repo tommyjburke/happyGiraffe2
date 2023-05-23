@@ -44,3 +44,4 @@ describe('ProtectedRoute component', () => {
       )
    })
 })
+

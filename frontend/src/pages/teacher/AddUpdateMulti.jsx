@@ -278,7 +278,7 @@ export default function AddUpdateQuiz() {
                                     theme={options.theme}
                                     placeholder='Write any instructions for pupil(s) here.....'
                                     className='notesQuill !important'
-                                    value={content || multiData.notes}
+                                    value={content}
                                  />
                               </div>
                               {/* {multiData.notes} */}

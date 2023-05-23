@@ -5,7 +5,11 @@ import { Table } from 'antd'
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 
-import { getAllMaths, deleteMathsById } from '../../_apiCalls/apiMaths'
+import {
+   getAllMaths,
+   deleteMathsById,
+   getAllMathsByTeacherId,
+} from '../../_apiCalls/apiMaths'
 import { HideLoading, ShowLoading } from '../../redux/loaderSlice'
 import { Radio, Tabs } from 'antd'
 
@@ -108,7 +112,7 @@ export default function MyMaths() {
    const getMathsData = async () => {
       try {
          dispatch(ShowLoading())
-         const response = await getAllMaths()
+         const response = await getAllMathsByTeacherId()
          dispatch(HideLoading())
          if (response.success) {
             setMaths(response.data)

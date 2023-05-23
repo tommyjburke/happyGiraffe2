@@ -116,11 +116,11 @@ export default function ResultsMaths() {
       setSortedInfo(sorter)
    }
    const clearFilters = () => {
-      setFilteredInfo({})
+      setFilteredInfo(null)
    }
    const clearAll = () => {
       setFilteredInfo({})
-      setSortedInfo({})
+      setSortedInfo()
    }
    const setScoreSort = () => {
       setSortedInfo({
@@ -140,30 +140,47 @@ export default function ResultsMaths() {
          order: sorter.order,
       })
    }
+
+   const assignmentTitles = mathsResultsData.map(
+      (title) => title.assignmentId.assignmentTitle
+   )
+   const uniqueAssignmentTitles = assignmentTitles.filter(
+      (title, index) => assignmentTitles.indexOf(title) === index
+   )
+
+   const titleOptions = uniqueAssignmentTitles.map((title) => ({
+      text: title,
+      value: title,
+   }))
+
+   const pupilNames = mathsResultsData.map((name) => name.pupilName)
+   const uniquePupilNames = pupilNames.filter(
+      (name, index) => pupilNames.indexOf(name) === index
+   )
+   const pupilOptions = uniquePupilNames.map((title) => ({
+      text: title,
+      value: title,
+   }))
    const mathsColumns = [
       {
          title: 'Pupil Name',
          dataIndex: 'pupilName',
          key: 'pupilName',
          sorter: true,
+         // sortOrder: sortConfig.key == 'pupilName' && sortConfig.sortOrder,
          sortOrder: sortConfig.key == 'pupilName' && sortConfig.sortOrder,
+         filters: pupilOptions,
+         onFilter: (value, record) => record.pupilName.includes(value),
       },
       {
          title: 'Assignment Title',
          dataIndex: ['assignmentId', 'assignmentTitle'],
          key: 'assignmentTitle',
          sorter: true,
+         // sortOrder: sortConfig.key == 'assignmentTitle' && sortConfig.sortOrder,
          sortOrder: sortConfig.key == 'assignmentTitle' && sortConfig.sortOrder,
-         filters: [
-            // {
-            //    text: { assignmentTitle },
-            //    value: { assignmentTitle },
-            // },
-            {
-               text: 'Jim',
-               value: 'Jim',
-            },
-         ],
+         filters: titleOptions,
+         onFilter: (value, record) => record.assignmentId.assignmentTitle.includes(value),
       },
       {
          title: 'Score',

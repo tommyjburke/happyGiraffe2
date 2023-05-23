@@ -1,8 +1,9 @@
 import { Col, message, Row, Space } from 'antd'
 import { useEffect, useState } from 'react'
 
-import { getAllMultis } from '../_apiCalls/apiMultis'
-import { getAllMaths } from '../_apiCalls/apiMaths'
+import { getAllMultis, getAllMultisByTeacherId } from '../_apiCalls/apiMultis'
+
+import { getAllMaths, getAllMathsByTeacherId } from '../_apiCalls/apiMaths'
 import { HideLoading, ShowLoading } from '../redux/loaderSlice'
 //
 import { useNavigate } from 'react-router-dom'
@@ -47,7 +48,7 @@ export default function Home() {
    const getMultis = async () => {
       try {
          dispatch(ShowLoading())
-         const response = await getAllMultis()
+         const response = await getAllMultisByTeacherId()
          if (response.success) {
             setMultis(response.data)
          } else {
@@ -63,7 +64,7 @@ export default function Home() {
    const getMaths = async () => {
       try {
          dispatch(ShowLoading())
-         const response = await getAllMaths()
+         const response = await getAllMathsByTeacherId()
          if (response.success) {
             setMathsQuizzes(response.data)
          } else {
@@ -213,12 +214,12 @@ export default function Home() {
                   </button>
                   <br />
 
-                  <button
+                  {/* <button
                      className='yellowBlueButton'
                      onClick={() => navigate('/teacher/add-multi')}
                   >
                      + CREATE MULTIPLE CHOICE
-                  </button>
+                  </button> */}
                </Space>
             </div>
          </div>

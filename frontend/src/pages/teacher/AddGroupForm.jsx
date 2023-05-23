@@ -16,7 +16,7 @@ import { message } from 'antd'
 import { getUserConnections } from '../../_apiCalls/apiUsers'
 import { createGroup } from '../../_apiCalls/apiGroups'
 
-export default function AddPupilForm() {
+export default function AddPupilForm({ getAllMyGroups, onCancel }) {
    const [mockData, setMockData] = useState([])
    const [targetKeys, setTargetKeys] = useState([])
 
@@ -123,7 +123,8 @@ export default function AddPupilForm() {
          if (response.success) {
             message.success(response.message)
             // navigate('/teacher/quiz')
-         } else {
+            getAllMyGroups()
+
             message.error(response.message)
          }
          dispatch(HideLoading())

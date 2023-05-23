@@ -137,9 +137,13 @@ export default function MyClasses() {
             onOk={handleNewGroupOk}
             footer={null}
             onCancel={handleNewGroupCancel}
+            getAllMyGroups={getAllMyGroups}
          >
             {/* <Box className='pupilForm'> */}
-            <AddGroupForm />
+            <AddGroupForm
+               getAllMyGroups={getAllMyGroups}
+               onCancel={handleNewGroupCancel}
+            />
             {/* </Box> */}
          </Modal>
          <h1>My Classes</h1>

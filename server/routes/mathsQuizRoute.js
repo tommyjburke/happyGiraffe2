@@ -53,35 +53,35 @@ router.post('/update-maths-by-id', authMiddleware, async (req, res) => {
    }
 })
 
-// router.post('/edit-multi-by-id', authMiddleware, async (req, res) => {
-//    try {
-//       await MultiQuiz.findByIdAndUpdate(req.body.multiId, req.body)
-//       res.send({
-//          message: 'MultiQuiz edited good good',
-//          success: true,
-//       })
-//    } catch (error) {
-//       res.status(500).send({
-//          message: error.message,
-//          data: error,
-//          success: false,
-//       })
-//    }
-// })
-
 router.post('/get-all-maths-by-teacher-id', authMiddleware, async (req, res) => {
-   const { userId } = req.body
+   //    const { userId } = req.body
+
+   //    try {
+   //       const mathsQuizzes = await MathsQuizModel.find({ 'gameOptions.userId': userId })
+   //       res.send({
+   //          message: 'All Maths Quizzes retrieved good good',
+   //          data: mathsQuizzes,
+   //          success: true,
+   //       })
+   //    } catch (error) {
+   //       res.status(500).send({
+   //          message: 'bang bang no good',
+   //          message: error.message,
+   //          data: error,
+   //          success: false,
+   //       })
+   //    }
+   // })
 
    try {
-      const mathsQuizzes = await MathsQuizModel.find({ 'gameOptions.userId': userId })
+      const maths = await MathsQuizModel.find({ teacherId: req.body.userId })
       res.send({
-         message: 'All Maths Quizzes retrieved good good',
-         data: mathsQuizzes,
+         message: 'Maths Quizzes retrieved good good',
+         data: maths,
          success: true,
       })
    } catch (error) {
       res.status(500).send({
-         message: 'bang bang no good',
          message: error.message,
          data: error,
          success: false,

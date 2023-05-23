@@ -16,6 +16,7 @@ const nodemailer = require('nodemailer')
 // user registration ENDPOINT
 
 router.post('/register', async (req, res) => {
+   console.log('REQ BODY', req.body)
    try {
       // check if user already exists
       const userExists = await UserModel.findOne({ email: req.body.email })
@@ -28,10 +29,13 @@ router.post('/register', async (req, res) => {
       const hashedPassword = await bcrypt.hash(req.body.password, salt)
       req.body.password = hashedPassword
 
-      const { isTeacher } = req.body
+      // const { isTeacher } = req.body
+
+      console.log('REQ BODY', req.body)
 
       // create new user in db
-      const newUser = new User(req.body)
+      const newUser = new UserModel(req.body)
+      console.log('NEW USER', newUser)
       await newUser.save()
 
       // var transport = nodemailer.createTransport({

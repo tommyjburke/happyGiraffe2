@@ -100,7 +100,7 @@ export default function MyPupils() {
             </Box>
          </Modal>
 
-         {JSON.stringify(contacts)}
+         {/* {JSON.stringify(contacts)} */}
          <h1>My Pupils/Contacts</h1>
          <Table columns={contactsColumns} dataSource={contacts} />
 

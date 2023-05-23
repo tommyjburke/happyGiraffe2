@@ -121,8 +121,10 @@ export default function BuildBoard({
             console.log('a: ', a)
             console.log('b: ', b)
             hiddenPosition = 2
+         } else if (opt == '/') {
+            hiddenPosition = 2
          }
-
+         console.log('Hidden Position: ', hiddenPosition)
          spanValues.push(parseInt(a))
          spanValues.push(parseInt(b))
 

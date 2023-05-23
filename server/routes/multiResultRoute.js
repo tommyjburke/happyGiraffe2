@@ -10,29 +10,20 @@ const PupilModel = require('../models/pupilModel')
 // get all Multi Results by Teacher Id to Assignment ID
 
 router.post('/get-all-multi-results-by-teacher-id', authMiddleware, async (req, res) => {
-   const userId = req.body.userId
-   console.log(req.body)
-   console.log('teacherId', userId)
-   const teacherId = userId
+   const teacherId = req.body.userId
 
    try {
-      const assignments = await AssignmentModel.find({
-         teacher: teacherId,
+      const assignments = await AssignmentModel.find({ teacherId })
+
+      const results = await MultiResult.find({
+         assignmentId: { $in: assignments.map((assignment) => assignment._id) },
       })
-      console.log('assignments', assignments)
-
-      const assignmentIds = assignments.map((assignment) => assignment._id)
-      console.log('assignmentIds', assignmentIds)
-      const multiResults = await MultiResult.find({
-         assignment: {
-            $in: assignmentIds,
-         },
-      }).populate('assignmentId')
-      console.log('multiResults', multiResults)
-
+         // .populate('multiQuiz')
+         .populate('assignmentId')
+         .sort({ createdAt: -1 })
       res.send({
-         message: 'Completed Assignment Results retrieved good good',
-         data: multiResults,
+         message: 'Multi Results retrieved success',
+         data: results,
          success: true,
       })
    } catch (error) {

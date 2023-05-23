@@ -4,7 +4,7 @@ import { message } from 'antd'
 import { Table } from 'antd'
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { getAllMultis, deleteMultiById } from '../../_apiCalls/apiMultis'
+import { getAllMultisByTeacherId, deleteMultiById } from '../../_apiCalls/apiMultis'
 import { getAllMaths } from '../../_apiCalls/apiMaths'
 import { HideLoading, ShowLoading } from '../../redux/loaderSlice'
 import { Radio, Tabs } from 'antd'
@@ -84,7 +84,7 @@ export default function MyQuizzes() {
    const getMultisData = async () => {
       try {
          dispatch(ShowLoading())
-         const response = await getAllMultis()
+         const response = await getAllMultisByTeacherId()
          dispatch(HideLoading())
          if (response.success) {
             setMultis(response.data)

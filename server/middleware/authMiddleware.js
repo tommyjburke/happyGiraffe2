@@ -45,7 +45,7 @@ module.exports = (req, res, next) => {
    } catch (error) {
       // console.log('*** MIDDLEWARE ERROR: INVALID TOKEN ***', error)
       res.status(401).send({
-         message: 'AuthenticaTION FAILED',
+         message: 'Not Logged In',
          data: error,
          success: false,
       })

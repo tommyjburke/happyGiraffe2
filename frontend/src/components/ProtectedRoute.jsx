@@ -34,22 +34,22 @@ export default function ProtectedRoute({ children }) {
 
    const basicMenu = [
       {
-         title: 'Sign In',
-         paths: ['/login'],
-         icon: <i className='ri-login-circle-line'></i>,
-         onClick: () => navigate('/login'),
-      },
-      {
          title: 'Create Maths Quiz',
          paths: ['/createmaths'],
          icon: <i className='ri-parentheses-line'></i>,
          onClick: () => navigate('/createmaths'),
       },
+      // {
+      //    title: 'Create MultiChoice Quiz',
+      //    paths: ['/createmulti'],
+      //    icon: <i className='ri-checkbox-multiple-line'></i>,
+      //    onClick: () => navigate('/createmulti'),
+      // },
       {
-         title: 'Create MultiChoice Quiz',
-         paths: ['/createmulti'],
-         icon: <i className='ri-checkbox-multiple-line'></i>,
-         onClick: () => navigate('/createmulti'),
+         title: 'Sign In',
+         paths: ['/login'],
+         icon: <i className='ri-login-circle-line'></i>,
+         onClick: () => navigate('/login'),
       },
    ]
 
@@ -314,29 +314,31 @@ export default function ProtectedRoute({ children }) {
                   top: '-0.3em !important',
                }}
             >
-               <Dropdown
-                  menu={menuProps}
-                  style={{
-                     position: 'relative !important',
-                     top: '-0.3em !important',
-                  }}
-               >
-                  <Button style={{ fontSize: '1.2em', fontFamily: 'schoolbell' }}>
-                     <Space
-                        style={{
-                           fontSize: '1.2em',
-                           fontFamily: 'schoolbell',
-                           position: 'relative',
-                           top: '-0.3em',
-                        }}
-                     >
-                        User: {currentUser}
-                        {/* CHILD */}
-                        {/* {activePupil.username || 'Select Child'} */}
-                        <DownOutlined />
-                     </Space>
-                  </Button>
-               </Dropdown>
+               {user && (
+                  <Dropdown
+                     menu={menuProps}
+                     style={{
+                        position: 'relative !important',
+                        top: '-0.3em !important',
+                     }}
+                  >
+                     <Button style={{ fontSize: '1.2em', fontFamily: 'schoolbell' }}>
+                        <Space
+                           style={{
+                              fontSize: '1.2em',
+                              fontFamily: 'schoolbell',
+                              position: 'relative',
+                              top: '-0.3em',
+                           }}
+                        >
+                           User: {currentUser}
+                           {/* CHILD */}
+                           {/* {activePupil.username || 'Select Child'} */}
+                           <DownOutlined />
+                        </Space>
+                     </Button>
+                  </Dropdown>
+               )}
                {showButton && (
                   <Space wrap>
                      <Button

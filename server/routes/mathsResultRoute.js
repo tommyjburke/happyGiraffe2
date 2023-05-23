@@ -6,30 +6,15 @@ const router = require('express').Router()
 const mongoose = require('mongoose')
 const AssignmentModel = require('../models/assignmentModel')
 
-router.post('/get-all-maths-results-by-teacher-id', authMiddleware, async (req, res) => {
-   const userId = req.body.userId
-   console.log(req.body)
-   console.log('teacherId', userId)
-   const teacherId = userId
-
+// add maths result
+router.post('/add-maths-result', authMiddleware, async (req, res) => {
+   console.log('MATH RESULT REQ BODY', req.body)
    try {
-      const assignments = await AssignmentModel.find({
-         teacher: teacherId,
-      })
-      console.log('assignments', assignments)
-
-      const assignmentIds = assignments.map((assignment) => assignment._id)
-      console.log('assignmentIds', assignmentIds)
-      const mathsResults = await MathsResult.find({
-         assignment: {
-            $in: assignmentIds,
-         },
-      }).populate('assignmentId')
-      console.log('MATHS RESULTS', mathsResults)
-
+      const newMathsResult = new MathsResult(req.body)
+      console.log(newMathsResult)
+      await newMathsResult.save()
       res.send({
-         message: 'Got Maths Results for Lazy Teacher',
-         data: mathsResults,
+         message: 'Result saved!',
          success: true,
       })
    } catch (error) {
@@ -41,15 +26,21 @@ router.post('/get-all-maths-results-by-teacher-id', authMiddleware, async (req, 
    }
 })
 
-// add result
-router.post('/add-maths-result', authMiddleware, async (req, res) => {
-   console.log('MATH RESULT REQ BODY', req.body)
+router.post('/get-all-maths-results-by-teacher-id', authMiddleware, async (req, res) => {
+   const teacherId = req.body.userId
+
    try {
-      const newMathsResult = new MathsResult(req.body)
-      console.log(newMathsResult)
-      await newMathsResult.save()
+      const assignments = await AssignmentModel.find({ teacherId })
+
+      const results = await MathsResult.find({
+         assignmentId: { $in: assignments.map((assignment) => assignment._id) },
+      })
+         // .populate('mathsQuiz')
+         .populate('assignmentId')
+         .sort({ createdAt: -1 })
       res.send({
-         message: 'Result saved!',
+         message: 'Maths Results retrieved success',
+         data: results,
          success: true,
       })
    } catch (error) {
